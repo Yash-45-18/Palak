@@ -1,489 +1,514 @@
 
+<!DOCTYPE html>
+<html>
+<head>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,400;1,600&family=Dancing+Script:wght@700&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;}
-.site{font-family:'Nunito',sans-serif;background:#fff8fc;min-height:100vh;overflow-x:hidden;}
+:root{--pink:#ff6b9d;--deep:#c2185b;--purple:#9c27b0;}
+body{font-family:'Nunito',sans-serif;background:#0a0010;min-height:100vh;overflow-x:hidden;}
 
-@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+@keyframes aurora{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
+@keyframes float{0%,100%{transform:translateY(0px) rotate(0deg);}33%{transform:translateY(-12px) rotate(2deg);}66%{transform:translateY(-6px) rotate(-1deg);}}
+@keyframes floatR{0%,100%{transform:translateY(0px);}50%{transform:translateY(-10px);}}
 @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.12);}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
-@keyframes slideIn{from{opacity:0;transform:translateX(-20px);}to{opacity:1;transform:translateX(0);}}
-@keyframes shake{0%,100%{transform:rotate(0);}20%{transform:rotate(-8deg);}40%{transform:rotate(8deg);}60%{transform:rotate(-5deg);}80%{transform:rotate(5deg);}}
-@keyframes bounce{0%,100%{transform:translateY(0);}40%{transform:translateY(-14px);}70%{transform:translateY(-6px);}}
-@keyframes spin{to{transform:rotate(360deg);}}
-@keyframes ripple{0%{transform:scale(0.8);opacity:1;}100%{transform:scale(2.4);opacity:0;}}
-@keyframes typing{0%,60%,100%{opacity:1;}30%{opacity:0.3;}}
-@keyframes confetti-fall{0%{transform:translateY(-20px) rotate(0deg);opacity:1;}100%{transform:translateY(120vh) rotate(720deg);opacity:0;}}
-@keyframes heartBeat{0%,100%{transform:scale(1);}14%{transform:scale(1.3);}28%{transform:scale(1);}42%{transform:scale(1.2);}70%{transform:scale(1);}}
-@keyframes glow{0%,100%{text-shadow:0 0 8px #f9a8d4;}50%{text-shadow:0 0 22px #f472b6,0 0 40px #f9a8d4;}}
-@keyframes waveHand{0%,100%{transform:rotate(0);}25%{transform:rotate(20deg);}75%{transform:rotate(-10deg);}}
-@keyframes phoneRing{0%,100%{transform:rotate(0) scale(1);}15%{transform:rotate(-15deg) scale(1.1);}30%{transform:rotate(15deg) scale(1.1);}45%{transform:rotate(-10deg);}60%{transform:rotate(10deg);}75%{transform:rotate(-5deg);}}
-@keyframes msgPop{0%{transform:scale(0.7);opacity:0;}70%{transform:scale(1.05);}100%{transform:scale(1);opacity:1;}}
+@keyframes heartBeat{0%,100%{transform:scale(1);}14%{transform:scale(1.35);}28%{transform:scale(1);}42%{transform:scale(1.2);}70%{transform:scale(1);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes shimmer{0%{background-position:-200% center;}100%{background-position:200% center;}}
+@keyframes phoneRing{0%,100%{transform:rotate(0);}10%{transform:rotate(-18deg);}20%{transform:rotate(18deg);}30%{transform:rotate(-12deg);}40%{transform:rotate(12deg);}50%{transform:rotate(0);}}
+@keyframes typing{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}}
+@keyframes confettiFall{0%{transform:translateY(-10px) rotate(0deg);opacity:1;}100%{transform:translateY(110vh) rotate(720deg);opacity:0;}}
+@keyframes glowPulse{0%,100%{box-shadow:0 0 20px rgba(255,107,157,0.3);}50%{box-shadow:0 0 50px rgba(255,107,157,0.7),0 0 80px rgba(156,39,176,0.4);}}
+@keyframes nameGlow{0%,100%{text-shadow:0 0 20px rgba(255,107,157,0.5);}50%{text-shadow:0 0 40px rgba(255,107,157,0.9),0 0 70px rgba(255,150,200,0.6);}}
+@keyframes borderRotate{0%{background-position:0% 50%;}100%{background-position:400% 50%;}}
+@keyframes pop{0%{transform:scale(0.5);opacity:0;}70%{transform:scale(1.08);}100%{transform:scale(1);opacity:1;}}
+@keyframes wave{0%,100%{transform:rotate(0deg);}25%{transform:rotate(25deg);}75%{transform:rotate(-15deg);}}
+@keyframes gradMove{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
+@keyframes countUp{from{opacity:0;transform:scale(0.5);}to{opacity:1;transform:scale(1);}}
+@keyframes specialPulse{0%,100%{transform:scale(1);box-shadow:0 0 30px rgba(255,107,157,0.3);}50%{transform:scale(1.02);box-shadow:0 0 60px rgba(255,107,157,0.6),0 0 100px rgba(156,39,176,0.3);}}
+@keyframes heartFloat{0%{transform:translateY(0) scale(1);opacity:1;}100%{transform:translateY(-80px) scale(0);opacity:0;}}
+@keyframes slideRight{from{opacity:0;transform:translateX(-30px);}to{opacity:1;transform:translateX(0);}}
+@keyframes ripple{0%{transform:scale(0.6);opacity:1;}100%{transform:scale(2.8);opacity:0;}}
 
-.confetti-piece{position:fixed;width:10px;height:10px;top:-20px;border-radius:2px;animation:confetti-fall linear forwards;pointer-events:none;z-index:999;}
+.particle{position:fixed;pointer-events:none;z-index:0;border-radius:50%;animation:float var(--d) ease-in-out infinite;animation-delay:var(--delay);}
+.star-particle{position:fixed;pointer-events:none;z-index:0;font-size:var(--s);animation:floatR var(--d) ease-in-out infinite;animation-delay:var(--delay);}
 
-.nav{background:#fff;border-bottom:0.5px solid #fce7f3;padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:54px;position:sticky;top:0;z-index:10;}
-.nav-logo{font-size:16px;font-weight:900;color:#db2777;display:flex;align-items:center;gap:6px;animation:heartBeat 2s infinite;}
-.nav-links{display:flex;gap:2px;}
-.nav-btn{background:none;border:none;padding:6px 11px;border-radius:20px;font-size:12px;font-family:'Nunito',sans-serif;font-weight:700;color:#9ca3af;cursor:pointer;transition:all 0.2s;}
-.nav-btn:hover,.nav-btn.active{background:#fdf2f8;color:#be185d;}
+.hero-bg{
+  background:linear-gradient(-45deg,#1a0030,#2d0050,#400060,#1a0040,#0d0025,#2a0045);
+  background-size:400% 400%;animation:aurora 8s ease infinite;
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;
+  padding:0 20px 60px;position:relative;overflow:hidden;
+}
 
-.hero{background:#fff;border-bottom:0.5px solid #fce7f3;padding:36px 20px 28px;text-align:center;animation:fadeUp 0.6s ease both;}
-.avatar-wrap{position:relative;width:96px;height:96px;margin:0 auto 16px;}
-.avatar{width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,#fbcfe8,#f9a8d4);border:3px solid #f472b6;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:900;color:#9d174d;animation:float 3s ease-in-out infinite;}
-.online-dot{position:absolute;bottom:4px;right:4px;width:16px;height:16px;background:#22c55e;border-radius:50%;border:2px solid #fff;}
-.online-dot::after{content:'';position:absolute;inset:0;border-radius:50%;background:#22c55e;animation:ripple 1.5s ease-out infinite;}
-.hero-name{font-size:30px;font-weight:900;color:#1f2937;margin-bottom:4px;animation:glow 3s ease-in-out infinite;}
-.hero-sub{font-size:13px;color:#9ca3af;margin-bottom:4px;}
-.call-status{display:inline-flex;align-items:center;gap:6px;background:#fef2f2;border:0.5px solid #fca5a5;border-radius:20px;padding:5px 14px;font-size:12px;font-weight:700;color:#b91c1c;margin-bottom:16px;}
-.phone-icon{font-size:16px;animation:phoneRing 2s ease-in-out infinite;}
-.badge-row{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:18px;}
-.badge{font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;}
-.b-pink{background:#fce7f3;color:#9d174d;}
-.b-purple{background:#ede9fe;color:#5b21b6;}
-.b-teal{background:#d1fae5;color:#065f46;}
-.b-amber{background:#fef3c7;color:#78350f;}
-.b-blue{background:#dbeafe;color:#1e40af;}
+.nav{width:100%;max-width:700px;display:flex;align-items:center;justify-content:space-between;padding:18px 0 28px;position:relative;z-index:10;}
+.nav-logo{font-family:'Dancing Script',cursive;font-size:22px;color:#ffb3d4;display:flex;align-items:center;gap:8px;}
+.nav-logo span{animation:heartBeat 2s ease-in-out infinite;display:inline-block;}
+.nav-links{display:flex;gap:4px;flex-wrap:wrap;}
+.nav-btn{background:rgba(255,255,255,0.08);border:0.5px solid rgba(255,107,157,0.3);color:rgba(255,180,210,0.8);padding:7px 12px;border-radius:20px;font-size:12px;font-family:'Nunito',sans-serif;font-weight:700;cursor:pointer;transition:all 0.25s;backdrop-filter:blur(4px);}
+.nav-btn:hover,.nav-btn.active{background:rgba(255,107,157,0.25);border-color:rgba(255,107,157,0.7);color:#ffb3d4;transform:translateY(-1px);}
 
-.miss-btn{background:linear-gradient(135deg,#ec4899,#db2777);color:#fff;border:none;padding:11px 30px;border-radius:28px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer;transition:transform 0.15s,opacity 0.15s;animation:pulse 2.5s ease-in-out infinite;}
-.miss-btn:hover{transform:scale(1.06);opacity:0.92;}
+.avatar-section{position:relative;margin-bottom:24px;animation:fadeUp 0.8s ease 0.2s both;}
+.avatar-ring{width:130px;height:130px;border-radius:50%;background:linear-gradient(135deg,#ff6b9d,#c2185b,#9c27b0,#ff6b9d);background-size:300% 300%;animation:borderRotate 3s linear infinite,glowPulse 2s ease-in-out infinite;display:flex;align-items:center;justify-content:center;padding:3px;}
+.avatar-inner{width:100%;height:100%;border-radius:50%;background:linear-gradient(135deg,#4a0050,#2d0040);display:flex;align-items:center;justify-content:center;font-family:'Dancing Script',cursive;font-size:52px;color:#ffb3d4;}
+.online-ring{position:absolute;bottom:6px;right:6px;}
+.online-dot-inner{width:18px;height:18px;background:#00e676;border-radius:50%;border:2px solid #1a0030;position:relative;}
+.online-dot-inner::after{content:'';position:absolute;inset:0;border-radius:50%;background:#00e676;animation:ripple 1.8s ease-out infinite;}
 
-.section{display:none;padding:24px 16px 56px;max-width:640px;margin:0 auto;animation:fadeUp 0.4s ease both;}
-.section.visible{display:block;}
-.sec-title{font-size:18px;font-weight:900;color:#1f2937;margin-bottom:14px;}
+.hero-name{font-family:'Dancing Script',cursive;font-size:clamp(46px,12vw,72px);color:#fff;margin-bottom:6px;animation:nameGlow 3s ease-in-out infinite,fadeUp 0.8s ease 0.4s both;letter-spacing:2px;}
+.hero-emoji{display:inline-block;animation:wave 2s ease-in-out infinite;}
+.hero-sub{font-size:14px;color:rgba(255,180,210,0.8);margin-bottom:14px;letter-spacing:0.5px;animation:fadeUp 0.8s ease 0.5s both;}
+.status-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,50,50,0.15);border:1px solid rgba(255,100,100,0.4);border-radius:24px;padding:6px 16px;font-size:12px;font-weight:700;color:#ff8a80;margin-bottom:20px;animation:fadeUp 0.8s ease 0.6s both;}
+.phone-anim{font-size:16px;animation:phoneRing 2.5s ease-in-out infinite;}
+.badge-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px;animation:fadeUp 0.8s ease 0.7s both;}
+.badge{font-size:11px;font-weight:800;padding:5px 14px;border-radius:20px;backdrop-filter:blur(4px);transition:transform 0.2s;cursor:default;}
+.badge:hover{transform:translateY(-3px) scale(1.05);}
+.b1{background:rgba(255,107,157,0.2);color:#ffb3d4;border:0.5px solid rgba(255,107,157,0.4);}
+.b2{background:rgba(156,39,176,0.2);color:#e1bee7;border:0.5px solid rgba(156,39,176,0.4);}
+.b3{background:rgba(0,188,212,0.15);color:#b2ebf2;border:0.5px solid rgba(0,188,212,0.3);}
+.b4{background:rgba(255,193,7,0.15);color:#fff9c4;border:0.5px solid rgba(255,193,7,0.3);}
+.b5{background:rgba(76,175,80,0.15);color:#c8e6c9;border:0.5px solid rgba(76,175,80,0.3);}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;animation:fadeUp 0.8s ease 0.8s both;}
+.cta-main{background:linear-gradient(135deg,#ff6b9d,#c2185b,#9c27b0);background-size:200% 200%;animation:gradMove 3s ease infinite;color:#fff;border:none;padding:13px 32px;border-radius:30px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer;transition:transform 0.2s;}
+.cta-main:hover{transform:scale(1.06) translateY(-2px);}
+.cta-ghost{background:rgba(255,255,255,0.08);border:1px solid rgba(255,107,157,0.5);color:#ffb3d4;padding:13px 24px;border-radius:30px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s;backdrop-filter:blur(4px);}
+.cta-ghost:hover{background:rgba(255,107,157,0.15);transform:translateY(-2px);}
+.scroll-hint{margin-top:36px;color:rgba(255,180,210,0.5);font-size:12px;letter-spacing:0.1em;display:flex;flex-direction:column;align-items:center;gap:6px;animation:fadeIn 1s ease 1.5s both;}
+.scroll-arrow{font-size:20px;animation:float 1.5s ease-in-out infinite;}
 
-.card{background:#fff;border:0.5px solid #fce7f3;border-radius:16px;padding:18px;margin-bottom:12px;}
-.card-title{font-size:14px;font-weight:800;color:#1f2937;margin-bottom:6px;}
-.card-body{font-size:13px;color:#6b7280;line-height:1.7;}
+.main-content{background:#0f0018;position:relative;z-index:1;}
+.page-sec{display:none;padding:32px 16px 60px;max-width:660px;margin:0 auto;}
+.page-sec.visible{display:block;animation:fadeUp 0.4s ease both;}
+.sec-header{text-align:center;margin-bottom:28px;padding-bottom:20px;border-bottom:0.5px solid rgba(255,107,157,0.2);}
+.sec-title-main{font-family:'Dancing Script',cursive;font-size:34px;color:#ffb3d4;margin-bottom:6px;}
+.sec-sub{font-size:13px;color:rgba(255,180,210,0.5);}
+.shimmer-text{background:linear-gradient(90deg,#ffb3d4,#fff,#ff6b9d,#e1bee7,#ffb3d4);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite;font-weight:900;}
 
-.trait-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
-.trait-card{background:#fff;border:0.5px solid #fce7f3;border-radius:14px;padding:15px;text-align:center;transition:transform 0.2s;cursor:default;}
-.trait-card:hover{transform:translateY(-4px);}
-.t-icon{font-size:26px;margin-bottom:7px;display:block;}
-.t-label{font-size:13px;font-weight:800;color:#1f2937;margin-bottom:3px;}
-.t-desc{font-size:11px;color:#9ca3af;line-height:1.5;}
+.glass-card{background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,107,157,0.2);border-radius:20px;padding:22px;margin-bottom:14px;backdrop-filter:blur(8px);transition:transform 0.25s,border-color 0.25s,background 0.25s;}
+.glass-card:hover{transform:translateY(-4px);border-color:rgba(255,107,157,0.5);background:rgba(255,107,157,0.07);}
+.card-title{font-size:15px;font-weight:800;color:#ffb3d4;margin-bottom:8px;}
+.card-body{font-size:13px;color:rgba(255,200,220,0.7);line-height:1.75;}
 
-.chat-wrap{background:#f9fafb;border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px;margin-bottom:12px;}
-.msg-group{display:flex;flex-direction:column;gap:3px;}
-.msg-label-text{font-size:10px;color:#9ca3af;padding:0 4px;}
-.msg-her-label{align-self:flex-start;}
-.msg-me-label{align-self:flex-end;}
-.msg{max-width:82%;padding:9px 14px;border-radius:18px;font-size:13px;line-height:1.55;animation:msgPop 0.3s ease both;}
-.msg-her{background:#fce7f3;color:#4a0020;border-bottom-left-radius:4px;align-self:flex-start;}
-.msg-me{background:#ede9fe;color:#2e1065;border-bottom-right-radius:4px;align-self:flex-end;}
+.trait-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
+.trait-card{background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,107,157,0.18);border-radius:18px;padding:18px 14px;text-align:center;transition:all 0.25s;cursor:default;}
+.trait-card:hover{transform:translateY(-6px) scale(1.02);background:rgba(255,107,157,0.1);border-color:rgba(255,107,157,0.5);}
+.t-icon{font-size:28px;margin-bottom:8px;display:block;}
+.t-label{font-size:13px;font-weight:800;color:#ffb3d4;margin-bottom:4px;}
+.t-desc{font-size:11px;color:rgba(255,180,210,0.55);line-height:1.5;}
 
-.typing-indicator{display:flex;gap:4px;align-items:center;padding:10px 14px;background:#fce7f3;border-radius:18px;border-bottom-left-radius:4px;width:fit-content;}
-.dot{width:7px;height:7px;background:#f9a8d4;border-radius:50%;}
-.dot:nth-child(1){animation:typing 1.2s 0s infinite;}
-.dot:nth-child(2){animation:typing 1.2s 0.2s infinite;}
-.dot:nth-child(3){animation:typing 1.2s 0.4s infinite;}
+.chat-wrap{background:rgba(255,255,255,0.03);border:0.5px solid rgba(255,107,157,0.15);border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:10px;margin-bottom:14px;}
+.msg-lbl{font-size:10px;color:rgba(255,180,210,0.4);padding:0 4px;margin-bottom:2px;}
+.msg-her-lbl{align-self:flex-start;}
+.msg-me-lbl{align-self:flex-end;}
+.msg{max-width:82%;padding:10px 16px;border-radius:20px;font-size:13px;line-height:1.6;animation:pop 0.35s ease both;}
+.msg-her{background:linear-gradient(135deg,rgba(255,107,157,0.25),rgba(156,39,176,0.2));color:#ffd6e8;border-bottom-left-radius:4px;border:0.5px solid rgba(255,107,157,0.25);align-self:flex-start;}
+.msg-me{background:linear-gradient(135deg,rgba(100,60,180,0.3),rgba(60,20,120,0.3));color:#ddd6ff;border-bottom-right-radius:4px;border:0.5px solid rgba(150,100,255,0.25);align-self:flex-end;}
+.typing-wrap{display:flex;gap:5px;align-items:center;padding:10px 14px;background:rgba(255,107,157,0.12);border-radius:18px;border-bottom-left-radius:4px;width:fit-content;border:0.5px solid rgba(255,107,157,0.2);}
+.dot{width:7px;height:7px;background:#ff9fc2;border-radius:50%;animation:typing 1.2s ease-in-out infinite;}
+.dot:nth-child(2){animation-delay:0.2s;}
+.dot:nth-child(3){animation-delay:0.4s;}
 
-.joke-card{background:#fffbeb;border:0.5px solid #fcd34d;border-radius:16px;padding:20px;margin-bottom:12px;text-align:center;}
-.joke-q{font-size:15px;font-weight:800;color:#451a03;margin-bottom:10px;line-height:1.5;}
-.joke-a{font-size:14px;color:#78350f;font-family:'Playfair Display',serif;font-style:italic;display:none;margin-bottom:12px;line-height:1.7;animation:fadeUp 0.4s ease both;}
+.call-log{border-radius:20px;overflow:hidden;border:0.5px solid rgba(255,107,157,0.2);margin-bottom:14px;}
+.call-row{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:0.5px solid rgba(255,107,157,0.1);background:rgba(255,255,255,0.02);transition:background 0.2s;}
+.call-row:last-child{border-bottom:none;}
+.call-row:hover{background:rgba(255,107,157,0.07);}
+.call-icon{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.call-missed-bg{background:rgba(255,60,60,0.15);border:0.5px solid rgba(255,60,60,0.3);}
+.call-ok-bg{background:rgba(0,220,100,0.12);border:0.5px solid rgba(0,220,100,0.25);}
+.call-name{font-size:13px;font-weight:800;color:#ffd6e8;flex:1;}
+.call-detail{font-size:11px;color:rgba(255,180,210,0.5);margin-top:2px;}
+.missed-tag{color:#ff6b6b;font-weight:800;}
+.ok-tag{color:#69ff90;font-weight:800;}
+.call-time{font-size:11px;color:rgba(255,180,210,0.4);}
+
+.things-list{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
+.thing-item{background:rgba(255,255,255,0.03);border-left:3px solid #ff6b9d;border-radius:0 14px 14px 0;padding:12px 16px;font-size:13px;color:rgba(255,200,220,0.75);line-height:1.6;border-top:0.5px solid rgba(255,107,157,0.12);border-right:0.5px solid rgba(255,107,157,0.12);border-bottom:0.5px solid rgba(255,107,157,0.12);transition:all 0.2s;}
+.thing-item:hover{background:rgba(255,107,157,0.08);transform:translateX(4px);}
+.thing-item b{color:#ffb3d4;}
+
+.joke-card{background:linear-gradient(135deg,rgba(255,193,7,0.08),rgba(255,152,0,0.06));border:0.5px solid rgba(255,193,7,0.3);border-radius:20px;padding:24px;margin-bottom:14px;text-align:center;}
+.joke-q{font-size:15px;font-weight:800;color:#ffe082;margin-bottom:12px;line-height:1.5;}
+.joke-a{font-size:14px;color:#ffcc80;font-family:'Playfair Display',serif;font-style:italic;display:none;margin-bottom:14px;line-height:1.75;animation:fadeUp 0.4s ease both;}
 .joke-a.show{display:block;}
-.reveal-btn{background:#d97706;color:#fff;border:none;padding:8px 22px;border-radius:20px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;transition:transform 0.15s;}
+.reveal-btn{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;padding:9px 24px;border-radius:20px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;transition:transform 0.2s;}
 .reveal-btn:hover{transform:scale(1.05);}
 
-.call-log{background:#fff;border:0.5px solid #fce7f3;border-radius:16px;overflow:hidden;margin-bottom:12px;}
-.call-row{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:0.5px solid #fce7f3;}
-.call-row:last-child{border-bottom:none;}
-.call-icon-wrap{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
-.call-missed{background:#fef2f2;}
-.call-made{background:#f0fdf4;}
-.call-info{flex:1;}
-.call-name{font-size:13px;font-weight:800;color:#1f2937;}
-.call-detail{font-size:11px;color:#9ca3af;margin-top:2px;}
-.call-time{font-size:11px;color:#9ca3af;}
-.missed-label{font-size:11px;color:#ef4444;font-weight:700;}
+.emo-card{background:linear-gradient(135deg,rgba(255,107,157,0.1),rgba(156,39,176,0.12));border:0.5px solid rgba(255,107,157,0.3);border-radius:20px;padding:26px 24px;margin-bottom:14px;text-align:center;}
+.emo-icon{font-size:40px;margin-bottom:12px;display:block;animation:float 3s ease-in-out infinite;}
+.emo-title{font-size:16px;font-weight:900;color:#ffb3d4;margin-bottom:10px;}
+.emo-body{font-size:13px;color:rgba(255,200,220,0.75);line-height:1.85;font-family:'Playfair Display',serif;font-style:italic;}
 
-.memory-card{background:#fff;border:0.5px solid #fce7f3;border-radius:14px;padding:16px;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start;transition:transform 0.2s;}
-.memory-card:hover{transform:translateX(4px);}
-.mem-icon-wrap{width:38px;height:38px;border-radius:50%;background:#fdf2f8;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;}
-.mem-title{font-size:13px;font-weight:800;color:#1f2937;margin-bottom:4px;}
-.mem-body{font-size:12px;color:#6b7280;line-height:1.6;}
+.mem-card{background:rgba(255,255,255,0.03);border:0.5px solid rgba(255,107,157,0.18);border-radius:16px;padding:16px;margin-bottom:10px;display:flex;gap:14px;align-items:flex-start;transition:all 0.25s;}
+.mem-card:hover{background:rgba(255,107,157,0.08);transform:translateX(5px);}
+.mem-icon-c{width:42px;height:42px;border-radius:50%;background:rgba(255,107,157,0.15);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;border:0.5px solid rgba(255,107,157,0.25);}
+.mem-t{font-size:13px;font-weight:800;color:#ffb3d4;margin-bottom:4px;}
+.mem-b{font-size:12px;color:rgba(255,180,210,0.6);line-height:1.65;}
 
-.emo-card{background:linear-gradient(135deg,#fdf2f8,#ede9fe);border:0.5px solid #f9a8d4;border-radius:16px;padding:22px;margin-bottom:12px;text-align:center;}
-.emo-icon{font-size:36px;margin-bottom:10px;display:block;animation:float 3s ease-in-out infinite;}
-.emo-title{font-size:15px;font-weight:900;color:#1f2937;margin-bottom:8px;}
-.emo-body{font-size:13px;color:#4b5563;line-height:1.75;font-family:'Playfair Display',serif;font-style:italic;}
+.msg-area{background:rgba(255,255,255,0.03);border:0.5px solid rgba(255,107,157,0.2);border-radius:20px;padding:22px;}
+.msg-area textarea{width:100%;background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,107,157,0.3);border-radius:14px;padding:12px 16px;font-family:'Nunito',sans-serif;font-size:13px;color:#ffd6e8;resize:none;min-height:90px;outline:none;transition:border-color 0.2s;}
+.msg-area textarea::placeholder{color:rgba(255,180,210,0.4);}
+.msg-area textarea:focus{border-color:rgba(255,107,157,0.7);}
+.send-btn{background:linear-gradient(135deg,#ff6b9d,#c2185b);color:#fff;border:none;padding:11px 26px;border-radius:24px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;margin-top:12px;float:right;transition:transform 0.2s;}
+.send-btn:hover{transform:scale(1.05);}
+.sent-ok{font-size:13px;color:#69ff90;display:none;margin-top:10px;font-weight:700;animation:fadeUp 0.3s ease both;}
 
-.reply-area{background:#fff;border:0.5px solid #fce7f3;border-radius:16px;padding:18px;margin-top:4px;}
-.reply-area textarea{width:100%;border:0.5px solid #f9a8d4;border-radius:10px;padding:10px 14px;font-family:'Nunito',sans-serif;font-size:13px;resize:none;color:#1f2937;background:#fff8fc;min-height:80px;outline:none;transition:border 0.2s;}
-.reply-area textarea:focus{border-color:#ec4899;}
-.send-btn{background:linear-gradient(135deg,#ec4899,#db2777);color:#fff;border:none;padding:9px 22px;border-radius:20px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;margin-top:10px;float:right;transition:transform 0.15s;}
-.send-btn:hover{transform:scale(1.04);}
-.sent-msg{font-size:13px;color:#059669;display:none;margin-top:10px;font-weight:700;animation:fadeUp 0.3s ease both;}
-
-.pop-overlay{display:none;position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.4);z-index:99;align-items:flex-start;justify-content:center;padding-top:60px;}
+.pop-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(6px);}
 .pop-overlay.show{display:flex;}
-.pop-box{background:#fff;border-radius:20px;padding:28px 24px;max-width:300px;width:90%;text-align:center;animation:fadeUp 0.35s ease both;}
-.pop-emoji{font-size:44px;margin-bottom:10px;display:block;animation:waveHand 1s ease-in-out infinite;}
-.pop-title{font-size:17px;font-weight:900;color:#1f2937;margin-bottom:8px;}
-.pop-body{font-size:13px;color:#6b7280;line-height:1.7;margin-bottom:18px;}
-.pop-close{background:linear-gradient(135deg,#ec4899,#db2777);color:#fff;border:none;padding:10px 24px;border-radius:20px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;}
+.pop-box{background:linear-gradient(135deg,#1a0030,#2d0050);border:1px solid rgba(255,107,157,0.4);border-radius:24px;padding:32px 28px;max-width:320px;width:90%;text-align:center;animation:pop 0.4s ease both;box-shadow:0 0 60px rgba(255,107,157,0.25);}
+.pop-em{font-size:48px;display:block;margin-bottom:14px;animation:heartBeat 1.5s ease-in-out infinite;}
+.pop-title{font-family:'Dancing Script',cursive;font-size:26px;color:#ffb3d4;margin-bottom:10px;}
+.pop-body{font-size:13px;color:rgba(255,200,220,0.75);line-height:1.75;margin-bottom:20px;}
+.pop-close{background:linear-gradient(135deg,#ff6b9d,#c2185b);color:#fff;border:none;padding:11px 28px;border-radius:24px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;}
+.confetti-piece{position:fixed;pointer-events:none;z-index:999;animation:confettiFall linear forwards;}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,107,157,0.4),transparent);margin:20px 0;}
 
-.things-list{display:flex;flex-direction:column;gap:8px;margin-bottom:12px;}
-.thing-item{background:#fff;border-left:3px solid #f472b6;border-radius:0 10px 10px 0;padding:11px 14px;font-size:13px;color:#374151;line-height:1.55;animation:slideIn 0.4s ease both;border-top:0.5px solid #fce7f3;border-right:0.5px solid #fce7f3;border-bottom:0.5px solid #fce7f3;}
-.thing-item b{color:#be185d;}
+/* ✨ SPECIAL 25 DAYS CARD */
+.special-25{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,rgba(255,107,157,0.15),rgba(156,39,176,0.2),rgba(255,107,157,0.1));
+  border:1.5px solid rgba(255,107,157,0.5);
+  border-radius:24px;padding:32px 24px;margin-bottom:16px;
+  text-align:center;
+  animation:specialPulse 3s ease-in-out infinite;
+}
+.special-25::before{
+  content:'';position:absolute;inset:0;border-radius:24px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.04),transparent);
+  animation:shimmer 3s linear infinite;
+  background-size:200% auto;
+}
+.days-number{
+  font-family:'Dancing Script',cursive;
+  font-size:80px;font-weight:700;
+  background:linear-gradient(135deg,#ff6b9d,#fff,#e1bee7);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  animation:countUp 1s ease both,nameGlow 3s ease-in-out infinite;
+  line-height:1;margin-bottom:4px;
+  display:block;
+}
+.days-label{font-size:13px;letter-spacing:0.3em;color:rgba(255,180,210,0.6);text-transform:uppercase;margin-bottom:20px;}
+.special-line{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:16px;color:rgba(255,220,235,0.9);
+  line-height:1.9;margin-bottom:18px;
+}
+.special-line b{
+  color:#ffb3d4;font-style:normal;font-family:'Dancing Script',cursive;font-size:19px;
+}
+.monkey-thanks{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,193,7,0.12);
+  border:0.5px solid rgba(255,193,7,0.35);
+  border-radius:20px;padding:10px 20px;
+  font-size:13px;font-weight:800;color:#ffe082;
+  animation:float 3s ease-in-out infinite;
+}
+.float-hearts{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.fh{
+  position:absolute;font-size:18px;
+  animation:heartFloat 4s ease-out infinite;
+  animation-delay:var(--d);
+  left:var(--l);bottom:-20px;
+}
 </style>
+</head>
+<body>
 
-<h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Miss You Palak — the ultimate fun and emotional friend tribute</h2>
-
-<div class="site" id="site-root" style="position:relative;">
-<div id="confetti-container" style="position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:999;overflow:hidden;"></div>
+<div id="confetti-c" style="position:fixed;inset:0;pointer-events:none;z-index:999;overflow:hidden;"></div>
+<div id="particles-c" style="position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;"></div>
 
 <div class="pop-overlay" id="pop">
   <div class="pop-box">
-    <span class="pop-emoji">📵</span>
-    <div class="pop-title">She declined your call. Again.</div>
-    <div class="pop-body">But guess what? She just sent you 11 texts, 3 voice notes, and a meme at the exact same time. That's her love language and it's VALID. 💕</div>
-    <button class="pop-close" onclick="document.getElementById('pop').classList.remove('show')">Okay fine 😭</button>
+    <span class="pop-em">📵</span>
+    <div class="pop-title">Declined. Again.</div>
+    <div class="pop-body">She watched the phone ring, smiled, declined it, and immediately opened WhatsApp to type you a 500-word text. That's Palak. That's love. 💕</div>
+    <button class="pop-close" onclick="closePop()">Okay I love her 😭</button>
   </div>
 </div>
 
-<nav class="nav">
-  <div class="nav-logo">💕 Palak's World</div>
-  <div class="nav-links">
-    <button class="nav-btn active" onclick="showPage('home',this)">Home</button>
-    <button class="nav-btn" onclick="showPage('calls',this)">Calls 📵</button>
-    <button class="nav-btn" onclick="showPage('funny',this)">Funny</button>
-    <button class="nav-btn" onclick="showPage('feels',this)">Feels</button>
-    <button class="nav-btn" onclick="showPage('msg',this)">Message</button>
-  </div>
-</nav>
+<div class="hero-bg" id="hero">
+  <nav class="nav">
+    <div class="nav-logo"><span>💕</span> Palak's World</div>
+    <div class="nav-links">
+      <button class="nav-btn active" onclick="showPage('home',this)">Home</button>
+      <button class="nav-btn" onclick="showPage('calls',this)">Calls📵</button>
+      <button class="nav-btn" onclick="showPage('funny',this)">Funny</button>
+      <button class="nav-btn" onclick="showPage('feels',this)">Feels💌</button>
+      <button class="nav-btn" onclick="showPage('msg',this)">Message</button>
+    </div>
+  </nav>
 
-<div class="hero">
-  <div class="avatar-wrap">
-    <div class="avatar">P</div>
-    <div class="online-dot"></div>
+  <div class="avatar-section">
+    <div class="avatar-ring"><div class="avatar-inner">P</div></div>
+    <div class="online-ring"><div class="online-dot-inner"></div></div>
   </div>
-  <div class="hero-name">Palak ✨</div>
-  <div class="hero-sub">Online — but will NOT call you back 😭</div>
-  <div class="call-status">
-    <span class="phone-icon">📵</span> Call declined · 0 seconds ago
-  </div>
+
+  <div class="hero-name">Palak <span class="hero-emoji">🌸</span></div>
+  <div class="hero-sub">The girl who texts novels but declines every call 📱✨</div>
+  <div class="status-pill"><span class="phone-anim">📵</span> Call declined · just now · She's online though 😭</div>
+
   <div class="badge-row">
-    <span class="badge b-pink">Funny soul</span>
-    <span class="badge b-purple">Good heart</span>
-    <span class="badge b-teal">Text queen</span>
-    <span class="badge b-amber">No-call policy</span>
-    <span class="badge b-blue">Chaos bestie</span>
+    <span class="badge b1">Funny soul</span>
+    <span class="badge b2">Good heart</span>
+    <span class="badge b3">Text queen</span>
+    <span class="badge b4">No-call zone</span>
+    <span class="badge b5">Chaos bestie</span>
+    <span class="badge b1">Irreplaceable</span>
   </div>
-  <button class="miss-btn" onclick="showMiss()">Miss you so much 💕</button>
+
+  <div class="cta-row">
+    <button class="cta-main" onclick="showMiss()">I miss you so much 💕</button>
+    <button class="cta-ghost" onclick="showPage('feels',document.querySelectorAll('.nav-btn')[3])">Read the letter 💌</button>
+  </div>
+  <div class="scroll-hint"><span>scroll down</span><span class="scroll-arrow">↓</span></div>
 </div>
 
-<div id="page-home" class="section visible">
+<div class="main-content">
+<div style="max-width:660px;margin:0 auto;padding:0 16px;">
 
-  <div class="sec-title">The Palak Files 🗂️</div>
+<div id="page-home" class="page-sec visible">
+  <div class="sec-header">
+    <div class="sec-title-main shimmer-text">About Palak</div>
+    <div class="sec-sub">the most unhinged wonderful person you know</div>
+  </div>
+
+  <!-- ✨ 25 DAYS SPECIAL CARD -->
+  <div class="special-25">
+    <div class="float-hearts">
+      <span class="fh" style="--l:10%;--d:0s;">💕</span>
+      <span class="fh" style="--l:25%;--d:1s;">🌸</span>
+      <span class="fh" style="--l:45%;--d:2s;">💖</span>
+      <span class="fh" style="--l:65%;--d:0.5s;">✨</span>
+      <span class="fh" style="--l:80%;--d:1.5s;">💕</span>
+      <span class="fh" style="--l:90%;--d:2.5s;">🌸</span>
+    </div>
+    <span class="days-number">25</span>
+    <div class="days-label">days ago everything changed</div>
+    <div class="special-line">
+      I met you just <b>25 days ago</b> —<br>
+      and somehow, in those 25 days,<br>
+      you became <b>the best part of my life.</b><br><br>
+      I didn't know a person could walk into your world<br>
+      and just… <b>fit.</b> Like they were always supposed to be there.<br><br>
+      That's you, Palak. That's exactly what you did. 💕
+    </div>
+    <div class="monkey-thanks">
+      🐒 Thank you monkey for finding her for me 🐒
+    </div>
+  </div>
+
   <div class="trait-grid">
-    <div class="trait-card">
-      <span class="t-icon">😂</span>
-      <div class="t-label">Certified funny</div>
-      <div class="t-desc">Laughs at her own jokes before finishing them</div>
-    </div>
-    <div class="trait-card">
-      <span class="t-icon">💬</span>
-      <div class="t-label">Text-only mode</div>
-      <div class="t-desc">Calls? Unknown concept. Essays? Daily.</div>
-    </div>
-    <div class="trait-card">
-      <span class="t-icon">🌸</span>
-      <div class="t-label">Beautiful soul</div>
-      <div class="t-desc">The warmest person in any room she enters</div>
-    </div>
-    <div class="trait-card">
-      <span class="t-icon">🎭</span>
-      <div class="t-label">Drama queen</div>
-      <div class="t-desc">"I'm literally DYING" — saw a spider</div>
-    </div>
-    <div class="trait-card">
-      <span class="t-icon">💤</span>
-      <div class="t-label">Reads at 2am</div>
-      <div class="t-desc">Will reply next morning. Or next week.</div>
-    </div>
-    <div class="trait-card">
-      <span class="t-icon">🎯</span>
-      <div class="t-label">Always right</div>
-      <div class="t-desc">Even when she's wrong, she's technically right</div>
-    </div>
+    <div class="trait-card"><span class="t-icon">😂</span><div class="t-label">Certified funny</div><div class="t-desc">Laughs at her own jokes before finishing them</div></div>
+    <div class="trait-card"><span class="t-icon">💬</span><div class="t-label">Text-only mode</div><div class="t-desc">Calls? Unknown. 6-part texts? Daily.</div></div>
+    <div class="trait-card"><span class="t-icon">🌸</span><div class="t-label">Beautiful soul</div><div class="t-desc">Warmest person in any room she enters</div></div>
+    <div class="trait-card"><span class="t-icon">🎭</span><div class="t-label">Drama queen</div><div class="t-desc">"I'm dying" — saw a bee. outside.</div></div>
+    <div class="trait-card"><span class="t-icon">💡</span><div class="t-label">Gives best advice</div><div class="t-desc">To everyone except herself. Classic.</div></div>
+    <div class="trait-card"><span class="t-icon">🌙</span><div class="t-label">2am energy</div><div class="t-desc">Sends "good night" then talks 2 more hours</div></div>
   </div>
 
-  <div class="sec-title">Real Palak energy 📱</div>
+  <div class="sec-title-main shimmer-text" style="font-size:24px;margin-bottom:14px;">Classic Palak Chat 📱</div>
   <div class="chat-wrap">
-    <div class="msg-group">
-      <div class="msg-label-text msg-me-label">You</div>
-      <div class="msg msg-me">palak PLEASE just call me for 2 minutes</div>
-    </div>
-    <div class="msg-group">
-      <div class="msg-label-text msg-her-label">Palak 🌸</div>
-      <div class="msg msg-her">okay okay calling in 5 mins</div>
-    </div>
-    <div class="msg-group">
-      <div class="msg-label-text msg-me-label">You (45 mins later)</div>
-      <div class="msg msg-me">palak.</div>
-    </div>
-    <div class="msg-group">
-      <div class="msg-label-text msg-her-label">Palak 🌸</div>
-      <div class="msg msg-her">OKAY so I was about to call and then I remembered something I had to tell you so I'm just going to type it out real quick —</div>
-    </div>
-    <div class="msg-group">
-      <div class="msg-label-text msg-her-label">Palak 🌸</div>
-      <div class="msg msg-her">*sends 6 voice notes*</div>
-    </div>
-    <div class="msg-group">
-      <div class="msg-label-text msg-her-label">Palak 🌸</div>
-      <div class="msg msg-her">anyway that's basically a call right 😭😂</div>
-    </div>
-    <div class="typing-indicator">
-      <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-    </div>
+    <div><div class="msg-lbl msg-me-lbl">You</div><div class="msg msg-me">Palak please just call me for 2 mins 🙏</div></div>
+    <div><div class="msg-lbl msg-her-lbl">Palak 🌸</div><div class="msg msg-her">okay yes calling in 5 min!!</div></div>
+    <div><div class="msg-lbl msg-me-lbl">You · 40 mins later</div><div class="msg msg-me">palak.</div></div>
+    <div><div class="msg-lbl msg-her-lbl">Palak 🌸</div><div class="msg msg-her">OKAY so I was literally about to call and then I thought of something important so let me just type it real quick —</div></div>
+    <div><div class="msg-lbl msg-her-lbl">Palak 🌸</div><div class="msg msg-her">*sends 8 voice notes back to back*</div></div>
+    <div><div class="msg-lbl msg-her-lbl">Palak 🌸</div><div class="msg msg-her">that's basically a call right?? same energy 😭😂</div></div>
+    <div class="typing-wrap"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
   </div>
 
+  <div class="glass-card">
+    <div class="card-title">Why she's your favourite person though 💖</div>
+    <div class="card-body">25 days. That's all it took. No long history, no years of shared memories — just 25 days and she somehow became the best part of your life. That's not normal. That's rare. That's Palak.</div>
+  </div>
 </div>
 
-<div id="page-calls" class="section">
-  <div class="sec-title">Palak's call history 📵</div>
-
-  <div class="card" style="margin-bottom:14px;">
-    <div class="card-body" style="text-align:center;font-size:13px;">
-      Palak has a <b style="color:#be185d;">strict no-call policy</b> established in 2019. It is non-negotiable. It is sacred. It is her entire personality.
-    </div>
+<div id="page-calls" class="page-sec">
+  <div class="sec-header">
+    <div class="sec-title-main shimmer-text">Call History 📵</div>
+    <div class="sec-sub">a tragic and consistent record</div>
   </div>
-
+  <div class="glass-card" style="text-align:center;margin-bottom:16px;">
+    <div class="card-body">Palak established her <b style="color:#ffb3d4;">strict no-call constitution</b> in 2019. It has never been violated. It is her religion.</div>
+  </div>
   <div class="call-log">
-    <div class="call-row">
-      <div class="call-icon-wrap call-missed">📵</div>
-      <div class="call-info">
-        <div class="call-name">You (calling)</div>
-        <div class="call-detail"><span class="missed-label">Declined instantly</span> · She was literally online</div>
-      </div>
-      <div class="call-time">now</div>
-    </div>
-    <div class="call-row">
-      <div class="call-icon-wrap call-missed">📵</div>
-      <div class="call-info">
-        <div class="call-name">You (calling)</div>
-        <div class="call-detail"><span class="missed-label">Declined</span> · Followed by 400-word text explanation</div>
-      </div>
-      <div class="call-time">2h ago</div>
-    </div>
-    <div class="call-row">
-      <div class="call-icon-wrap call-missed">📵</div>
-      <div class="call-info">
-        <div class="call-name">You (calling)</div>
-        <div class="call-detail"><span class="missed-label">Missed</span> · She was "in a situation" (watching reel)</div>
-      </div>
-      <div class="call-time">yesterday</div>
-    </div>
-    <div class="call-row">
-      <div class="call-icon-wrap call-missed">📵</div>
-      <div class="call-info">
-        <div class="call-name">You (calling)</div>
-        <div class="call-detail"><span class="missed-label">Declined</span> · She typed "calling u" then went silent</div>
-      </div>
-      <div class="call-time">Mon</div>
-    </div>
-    <div class="call-row">
-      <div class="call-icon-wrap call-made">✅</div>
-      <div class="call-info">
-        <div class="call-name">Pizza place (outgoing)</div>
-        <div class="call-detail" style="color:#16a34a;font-weight:700;">Connected · 4 mins 38 sec</div>
-        <div class="call-detail">She WILL call for food. Policy suspended.</div>
-      </div>
-      <div class="call-time">Sat</div>
-    </div>
-    <div class="call-row">
-      <div class="call-icon-wrap call-made">✅</div>
-      <div class="call-info">
-        <div class="call-name">You — emergency (she called!)</div>
-        <div class="call-detail" style="color:#16a34a;font-weight:700;">Connected · 2h 14 mins</div>
-        <div class="call-detail">Declared emergency. Was actually bored. Still best call ever.</div>
-      </div>
-      <div class="call-time">Last month</div>
-    </div>
+    <div class="call-row"><div class="call-icon call-missed-bg">📵</div><div style="flex:1"><div class="call-name">You (incoming)</div><div class="call-detail"><span class="missed-tag">Declined instantly</span> · She was literally staring at her phone</div></div><div class="call-time">now</div></div>
+    <div class="call-row"><div class="call-icon call-missed-bg">📵</div><div style="flex:1"><div class="call-name">You (incoming)</div><div class="call-detail"><span class="missed-tag">Declined</span> · Followed by a 600-word explanation text</div></div><div class="call-time">2h ago</div></div>
+    <div class="call-row"><div class="call-icon call-missed-bg">📵</div><div style="flex:1"><div class="call-name">You (incoming)</div><div class="call-detail"><span class="missed-tag">Missed</span> · She was "in a situation" (watching a reel)</div></div><div class="call-time">yesterday</div></div>
+    <div class="call-row"><div class="call-icon call-missed-bg">📵</div><div style="flex:1"><div class="call-name">You (incoming)</div><div class="call-detail"><span class="missed-tag">Declined</span> · Typed "calling u rn" then silent for 3 hours</div></div><div class="call-time">Monday</div></div>
+    <div class="call-row"><div class="call-icon call-ok-bg">✅</div><div style="flex:1"><div class="call-name">Pizza place (she called them!)</div><div class="call-detail"><span class="ok-tag">Connected · 6 min 12 sec</span> · Policy suspended for food</div></div><div class="call-time">Saturday</div></div>
+    <div class="call-row"><div class="call-icon call-ok-bg">✅</div><div style="flex:1"><div class="call-name">You — she called! (emergency)</div><div class="call-detail"><span class="ok-tag">Connected · 2h 47 min</span> · Emergency = bored. Best call ever.</div></div><div class="call-time">Last month</div></div>
   </div>
-
-  <div class="sec-title" style="margin-top:8px;">Things she says instead of calling</div>
+  <div class="sec-title-main shimmer-text" style="font-size:22px;margin-bottom:12px;">Instead of calling, she will:</div>
   <div class="things-list">
-    <div class="thing-item">📝 <b>"okay listen"</b> — followed by the longest text you've ever received</div>
-    <div class="thing-item">🎤 <b>Voice note #1 of 9</b> — "okay so first of all—"</div>
-    <div class="thing-item">📸 <b>Sends 14 screenshots</b> with zero context and expects you to understand</div>
-    <div class="thing-item">😭 <b>"I would call but"</b> — no reason given. just 'but'. that's it.</div>
-    <div class="thing-item">🌙 <b>Texts at 1am:</b> "are you up?" then immediately sends everything anyway</div>
-    <div class="thing-item">🔁 <b>"forward this to 5 friends"</b> — Palak sends it only to you. you are all 5 friends.</div>
+    <div class="thing-item">📝 <b>"okay listen"</b> — followed by the longest text in human history</div>
+    <div class="thing-item">🎤 <b>Voice note #1 of 11</b> — "okay so first of all you won't believe this—"</div>
+    <div class="thing-item">📸 <b>Sends 17 screenshots</b> with zero context and full expectation you understand</div>
+    <div class="thing-item">😭 <b>"I would call but—"</b> no reason. just 'but'. conversation over.</div>
+    <div class="thing-item">🌙 <b>Texts at 1:30am:</b> "you up?" then sends everything without waiting for reply</div>
+    <div class="thing-item">🎭 <b>"calling in 2 mins"</b> — this was said yesterday. still waiting.</div>
+    <div class="thing-item">💀 <b>Goes completely silent</b> for 4 hours then returns with "okay where were we"</div>
   </div>
 </div>
 
-<div id="page-funny" class="section">
-  <div class="sec-title">Palak's comedy special 😂</div>
-
+<div id="page-funny" class="page-sec">
+  <div class="sec-header">
+    <div class="sec-title-main shimmer-text">Palak's Comedy Hour 😂</div>
+    <div class="sec-sub">she doesn't try to be funny. that's why it works.</div>
+  </div>
   <div class="joke-card">
-    <div class="joke-q" id="jq">Why does Palak never call?</div>
+    <div class="joke-q" id="jq">Why does Palak never answer calls?</div>
     <div class="joke-a" id="ja"></div>
-    <button class="reveal-btn" id="jbtn" onclick="doJoke()">Tap to reveal 👀</button>
+    <button class="reveal-btn" id="jbtn" onclick="doJoke()">Reveal punchline 👀</button>
   </div>
-
-  <div class="sec-title">Things she always says 🗣️</div>
+  <div class="sec-title-main shimmer-text" style="font-size:22px;margin-bottom:12px;">Things she ALWAYS says 🗣️</div>
   <div class="things-list">
-    <div class="thing-item">😩 <b>"I'm so tired"</b> — then stays up till 3am texting you everything</div>
-    <div class="thing-item">🤯 <b>"okay but WAIT"</b> — story is about to get 10x more chaotic</div>
-    <div class="thing-item">💀 <b>"I'm dead"</b> — laughed at something. very much alive.</div>
-    <div class="thing-item">🤡 <b>"no no it's fine"</b> — it is NOT fine. she will mention it again in 3 days.</div>
-    <div class="thing-item">👀 <b>"don't tell anyone but—"</b> — she has already told 3 people</div>
-    <div class="thing-item">😭 <b>"why does this always happen to ME"</b> — it happened once. 2 years ago.</div>
-    <div class="thing-item">🎭 <b>"I don't even care"</b> — she cares deeply. deeply.</div>
-    <div class="thing-item">🕐 <b>"5 more minutes"</b> — this was said 2 hours ago</div>
-    <div class="thing-item">📵 <b>"calling you soon"</b> — she is not calling. she is composing a 900-word text.</div>
-    <div class="thing-item">💅 <b>"okay bestie"</b> — said sarcastically. also said sincerely. you never know which.</div>
+    <div class="thing-item">😩 <b>"I'm so tired"</b> — stays up till 3am sending memes anyway</div>
+    <div class="thing-item">🤯 <b>"okay but WAIT"</b> — story is about to go completely off the rails</div>
+    <div class="thing-item">💀 <b>"I'm literally dead"</b> — laughed at something. very much alive.</div>
+    <div class="thing-item">🤡 <b>"no no it's fine"</b> — it is NOT fine. she will bring it up again.</div>
+    <div class="thing-item">👀 <b>"don't tell anyone but—"</b> she told three people before you</div>
+    <div class="thing-item">😭 <b>"why does this always happen to ME"</b> — it happened once. in 2022.</div>
+    <div class="thing-item">🎭 <b>"I don't even care"</b> — she cares so much. so. so. much.</div>
+    <div class="thing-item">🕐 <b>"5 more minutes"</b> — that was 2 hours ago.</div>
+    <div class="thing-item">📵 <b>"calling you soon"</b> — composing a 1000-word voice note instead</div>
+    <div class="thing-item">😂 <b>Laughs at her own joke</b> before she even finishes telling it</div>
   </div>
-
-  <div class="sec-title" style="margin-top:4px;">Palak starter pack 🎒</div>
-  <div class="card">
-    <div class="card-body" style="display:flex;flex-direction:column;gap:8px;">
-      <div style="padding:8px 12px;background:#fff8fc;border-radius:8px;font-size:13px;">📵 Declines your call · sends essay immediately after</div>
-      <div style="padding:8px 12px;background:#fefce8;border-radius:8px;font-size:13px;">😂 Makes you laugh and then gets mad you're laughing</div>
-      <div style="padding:8px 12px;background:#f0fdf4;border-radius:8px;font-size:13px;">💬 Opens your message, reads it, closes app. Replies 6 hours later with "haha yeah"</div>
-      <div style="padding:8px 12px;background:#ede9fe;border-radius:8px;font-size:13px;">🌙 Sends "good night" then messages for 2 more hours</div>
-      <div style="padding:8px 12px;background:#fff8fc;border-radius:8px;font-size:13px;">🤌 Gives the BEST advice to everyone except herself</div>
+  <div class="glass-card">
+    <div class="card-title">Palak starter pack 🎒</div>
+    <div class="card-body" style="display:flex;flex-direction:column;gap:9px;margin-top:6px;">
+      <div style="padding:9px 14px;background:rgba(255,107,157,0.08);border-radius:10px;font-size:13px;color:rgba(255,200,220,0.8);">📵 Declines call · immediately texts a 40-message explanation</div>
+      <div style="padding:9px 14px;background:rgba(156,39,176,0.08);border-radius:10px;font-size:13px;color:rgba(255,200,220,0.8);">😂 Makes you laugh then gets offended you're laughing</div>
+      <div style="padding:9px 14px;background:rgba(0,188,212,0.06);border-radius:10px;font-size:13px;color:rgba(255,200,220,0.8);">💬 Reads your message, closes app, replies 6 hrs later with "lol haha yeah"</div>
+      <div style="padding:9px 14px;background:rgba(255,193,7,0.06);border-radius:10px;font-size:13px;color:rgba(255,200,220,0.8);">🌙 Says "good night" then talks until 2:30am</div>
+      <div style="padding:9px 14px;background:rgba(76,175,80,0.06);border-radius:10px;font-size:13px;color:rgba(255,200,220,0.8);">🤌 Gives everyone the best advice except herself</div>
     </div>
   </div>
 </div>
 
-<div id="page-feels" class="section">
-  <div class="sec-title">The real Palak 🌸</div>
+<div id="page-feels" class="page-sec">
+  <div class="sec-header">
+    <div class="sec-title-main shimmer-text">The Real Palak 💌</div>
+    <div class="sec-sub">behind all the chaos is the purest soul</div>
+  </div>
 
   <div class="emo-card">
-    <span class="emo-icon">💌</span>
-    <div class="emo-title">She may not call, but she always shows up</div>
-    <div class="emo-body">"When it truly mattered — when you were falling apart at 2am — she was there. Not with a call. With words that somehow landed exactly where you needed them to."</div>
+    <span class="emo-icon">🌸</span>
+    <div class="emo-title">She may not call. But she always shows up.</div>
+    <div class="emo-body">"When it truly mattered — when you were falling apart at 2am — she was there. Not with a call. With words that somehow landed exactly where your heart needed them."</div>
   </div>
 
-  <div class="memory-card">
-    <div class="mem-icon-wrap">🌙</div>
-    <div>
-      <div class="mem-title">The midnight texts nobody asked for</div>
-      <div class="mem-body">She'll randomly check in on you with a "hey are you okay?" at the weirdest times — and it always somehow happens when you actually needed someone to ask.</div>
-    </div>
-  </div>
-  <div class="memory-card">
-    <div class="mem-icon-wrap">😂</div>
-    <div>
-      <div class="mem-title">She made hard days lighter</div>
-      <div class="mem-body">On the days you thought nothing could make you smile, she sent one unhinged meme or told one chaotic story and suddenly the world felt less heavy.</div>
-    </div>
-  </div>
-  <div class="memory-card">
-    <div class="mem-icon-wrap">🤝</div>
-    <div>
-      <div class="mem-title">The friend who remembers everything</div>
-      <div class="mem-body">You mentioned something casually months ago — a dream, a worry, a silly thing you wanted. She remembered. She always remembers.</div>
-    </div>
-  </div>
-  <div class="memory-card">
-    <div class="mem-icon-wrap">💬</div>
-    <div>
-      <div class="mem-title">The texts that are basically therapy</div>
-      <div class="mem-body">No degree. No couch. Just Palak with her phone at 11pm telling you exactly what you needed to hear with such accuracy it's actually kind of scary.</div>
-    </div>
-  </div>
+  <div class="mem-card"><div class="mem-icon-c">🌙</div><div><div class="mem-t">The midnight "are you okay?" texts</div><div class="mem-b">She checks in at the exact moment you need it most. You never had to ask. She just knows.</div></div></div>
+  <div class="mem-card"><div class="mem-icon-c">😂</div><div><div class="mem-t">She made the hard days lighter</div><div class="mem-b">One unhinged message from her and suddenly the whole world feels less heavy.</div></div></div>
+  <div class="mem-card"><div class="mem-icon-c">🤝</div><div><div class="mem-t">She remembers everything</div><div class="mem-b">You mentioned something small — she remembered. She always, always remembers.</div></div></div>
+  <div class="mem-card"><div class="mem-icon-c">💬</div><div><div class="mem-t">Her texts are basically therapy</div><div class="mem-b">No degree. No couch. Just Palak at 11pm telling you exactly what you needed to hear.</div></div></div>
+  <div class="mem-card"><div class="mem-icon-c">🐒</div><div><div class="mem-t">Thank you, monkey 🐒</div><div class="mem-b">Whoever or whatever brought Palak into this life — we owe you everything. Best introduction ever made.</div></div></div>
 
-  <div class="emo-card" style="margin-top:4px;">
-    <span class="emo-icon">💛</span>
-    <div class="emo-title">A letter I want you to read</div>
-    <div class="emo-body">"Palak, you don't know how often you've made a real difference just by being you. Your humour, your warmth, your chaotic energy — it's not just entertaining, it's healing. Missing you isn't dramatic. It's just proof of how much space you take up in my life. Good space. The best space. Please text back soon. Don't call though — I know you won't. 💕"</div>
+  <div class="divider"></div>
+
+  <div class="emo-card">
+    <span class="emo-icon" style="font-size:32px;">💛</span>
+    <div class="emo-title" style="font-family:'Dancing Script',cursive;font-size:22px;">A letter I never called to say</div>
+    <div class="emo-body">
+      "Palak,<br><br>
+      25 days. That's it. That's all the time it took for you to become the best part of my life. I don't know how you did it — maybe it's your laugh, or your chaos, or the way you make everything feel lighter just by being in it.<br><br>
+      You walked in and just… fit. Like you were always supposed to be here.<br><br>
+      I'm grateful every single day for the monkey that found you for me. 🐒 Honestly, best thing that ever happened.<br><br>
+      Thank you for being you. For texting instead of calling (obviously), for making me laugh, for being that rare kind of person who makes 25 days feel like a lifetime of warmth.<br><br>
+      Miss you. Every day. Please don't call — just text. I know you will. 💕"
+    </div>
   </div>
 </div>
 
-<div id="page-msg" class="section">
-  <div class="sec-title">Drop her a message 💌</div>
-  <div style="font-size:13px;color:#9ca3af;margin-bottom:16px;">She will 100% read it. She will reply via 47 texts. You have been warned.</div>
-
-  <div class="chat-wrap" style="margin-bottom:16px;">
-    <div class="msg-group">
-      <div class="msg-label-text msg-her-label">Palak 🌸</div>
-      <div class="msg msg-her">omg you made a whole website for me??</div>
-    </div>
-    <div class="msg-group">
-      <div class="msg-label-text msg-her-label">Palak 🌸</div>
-      <div class="msg msg-her">I'm not crying you're crying 😭😭</div>
-    </div>
-    <div class="msg-group">
-      <div class="msg-label-text msg-her-label">Palak 🌸</div>
-      <div class="msg msg-her">leave me a message I'll reply I promise (not calling obviously but TEXTING yes)</div>
-    </div>
+<div id="page-msg" class="page-sec">
+  <div class="sec-header">
+    <div class="sec-title-main shimmer-text">Leave Her a Message 💌</div>
+    <div class="sec-sub">she'll read it, feel things, and reply via essay</div>
   </div>
-
-  <div class="reply-area">
-    <div style="font-size:13px;font-weight:800;color:#6b7280;margin-bottom:10px;">Your message to Palak 💬</div>
-    <textarea id="msg-input" placeholder="Tell her anything — she deserves to hear it 💕"></textarea>
+  <div class="chat-wrap" style="margin-bottom:18px;">
+    <div><div class="msg-lbl msg-her-lbl">Palak 🌸</div><div class="msg msg-her">omg you made me a WHOLE website?? 😭😭</div></div>
+    <div><div class="msg-lbl msg-her-lbl">Palak 🌸</div><div class="msg msg-her">and the 25 days thing… I'm literally crying 😭💕</div></div>
+    <div><div class="msg-lbl msg-her-lbl">Palak 🌸</div><div class="msg msg-her">leave me a message!! I'll reply (by text obviously, you know the rules 📵)</div></div>
+  </div>
+  <div class="msg-area">
+    <div style="font-size:13px;font-weight:800;color:rgba(255,180,210,0.6);margin-bottom:12px;">Your message to Palak 💬</div>
+    <textarea id="msg-input" placeholder="Tell her anything — she deserves every word 💕"></textarea>
     <button class="send-btn" onclick="sendMsg()">Send it 💌</button>
     <div style="clear:both;"></div>
-    <div class="sent-msg" id="sent-ok">✅ Sent! Palak is typing... (she'll text back an essay)</div>
+    <div class="sent-ok" id="sent-ok">✨ Sent! Palak is typing... prepare for a 47-message reply 😂💕</div>
   </div>
-
-  <div class="card" style="margin-top:16px;text-align:center;">
-    <div style="font-size:13px;color:#9ca3af;margin-bottom:8px;">In conclusion —</div>
-    <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:16px;color:#1f2937;line-height:1.8;">"She never calls. She always texts. She makes you laugh until you cry. She cries, then makes you laugh about it. She is Palak — and she is absolutely irreplaceable."</div>
+  <div class="glass-card" style="margin-top:18px;text-align:center;">
+    <div style="font-size:12px;color:rgba(255,180,210,0.4);margin-bottom:10px;letter-spacing:0.1em;">in conclusion</div>
+    <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:16px;color:rgba(255,200,220,0.85);line-height:1.9;">"25 days. A funny soul. A beautiful heart. A no-call policy. And somehow — the best part of my life. That's Palak."</div>
   </div>
 </div>
 
+</div>
 </div>
 
 <script>
+function initParticles(){
+  const c=document.getElementById('particles-c');
+  const emojis=['✨','💕','🌸','⭐','💫','🌟','💖','🦋'];
+  for(let i=0;i<22;i++){
+    const el=document.createElement('div');el.className='star-particle';
+    el.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+    el.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;--s:${10+Math.random()*14}px;--d:${4+Math.random()*6}s;--delay:${Math.random()*5}s;`;
+    c.appendChild(el);
+  }
+}
+initParticles();
+
 function showPage(id,btn){
-  document.querySelectorAll('.section').forEach(s=>s.classList.remove('visible'));
+  document.querySelectorAll('.page-sec').forEach(s=>s.classList.remove('visible'));
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('visible');
   btn.classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
+  document.querySelector('.main-content').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 const jokes=[
-  {q:"Why does Palak never call?",a:"Because her thumbs are literally faster than her mouth and she has receipts to prove it. 😂"},
-  {q:"What's Palak's ringtone?",a:"Nobody knows. The phone has never been answered. 📵"},
-  {q:"How does Palak say 'I love you'?",a:"She sends you 27 memes in a row at 1am. That's it. That's the love language. 💕"},
-  {q:"Why did Palak cross the road?",a:"To get away from someone who tried to call her. She blocked them too. 😭"},
-  {q:"What's Palak's superpower?",a:"Turning a 2-second phone call into a 4,000-word text document. Peak efficiency. 🦸‍♀️"},
-  {q:"How many Palaks does it take to change a lightbulb?",a:"Zero — she'll text you about it for 3 days first, then hire someone, then text you about THAT. 😂"},
+  {q:"Why does Palak never answer calls?",a:"Her thumbs move faster than her voice. She has scientifically optimized communication. She is peak evolution. 😂"},
+  {q:"What's Palak's ringtone?",a:"Nobody knows. The phone has never been answered. Scientists are baffled. 📵"},
+  {q:"Why did Palak cross the road?",a:"To get away from someone who tried to call her. Blocked them on the other side too. 😭"},
+  {q:"What's Palak's superpower?",a:"Turning a 2-second call into a 5,000-word text document with footnotes. Unmatched. 🦸‍♀️"},
+  {q:"How many Palaks does it take to change a lightbulb?",a:"One — but she'll text about it for 4 days, voice-note about it, then forget and buy a lamp. 😂"},
 ];
 let ji=0,revealed=false;
 document.getElementById('ja').textContent=jokes[0].a;
-
 function doJoke(){
   const ja=document.getElementById('ja'),btn=document.getElementById('jbtn');
   if(!revealed){ja.classList.add('show');btn.textContent='Next joke ➜';revealed=true;}
-  else{ji=(ji+1)%jokes.length;document.getElementById('jq').textContent=jokes[ji].q;ja.textContent=jokes[ji].a;ja.classList.remove('show');btn.textContent='Tap to reveal 👀';revealed=false;}
+  else{ji=(ji+1)%jokes.length;document.getElementById('jq').textContent=jokes[ji].q;ja.textContent=jokes[ji].a;ja.classList.remove('show');void ja.offsetWidth;btn.textContent='Reveal punchline 👀';revealed=false;}
 }
+
+function launchConfetti(){
+  const colors=['#ff6b9d','#a78bfa','#34d399','#fbbf24','#60a5fa','#f87171','#f9a8d4','#c4b5fd'];
+  const c=document.getElementById('confetti-c');
+  for(let i=0;i<55;i++){
+    const el=document.createElement('div');el.className='confetti-piece';
+    const size=6+Math.random()*10;
+    el.style.cssText=`left:${Math.random()*100}%;top:-20px;width:${size}px;height:${size}px;background:${colors[i%colors.length]};border-radius:${Math.random()>0.5?'50%':'3px'};animation-duration:${1.8+Math.random()*2.5}s;animation-delay:${Math.random()*0.8}s;`;
+    c.appendChild(el);
+    setTimeout(()=>el.remove(),4500);
+  }
+}
+
+function showMiss(){document.getElementById('pop').classList.add('show');launchConfetti();}
+function closePop(){document.getElementById('pop').classList.remove('show');}
+document.getElementById('pop').addEventListener('click',function(e){if(e.target===this)closePop();});
 
 function sendMsg(){
   const v=document.getElementById('msg-input').value.trim();
   if(!v)return;
-  const ok=document.getElementById('sent-ok');
-  ok.style.display='block';
+  document.getElementById('sent-ok').style.display='block';
   document.getElementById('msg-input').value='';
-  setTimeout(()=>{ok.style.display='none';},3500);
   launchConfetti();
+  setTimeout(()=>{document.getElementById('sent-ok').style.display='none';},4000);
 }
 
-function launchConfetti(){
-  const colors=['#f472b6','#a78bfa','#34d399','#fbbf24','#60a5fa','#f87171'];
-  const c=document.getElementById('confetti-container');
-  for(let i=0;i<36;i++){
-    const el=document.createElement('div');
-    el.className='confetti-piece';
-    el.style.cssText=`left:${Math.random()*100}%;background:${colors[Math.floor(Math.random()*colors.length)]};width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;border-radius:${Math.random()>0.5?'50%':'2px'};animation-duration:${1.5+Math.random()*2}s;animation-delay:${Math.random()*0.5}s;`;
-    c.appendChild(el);
-    setTimeout(()=>el.remove(),(3+Math.random()*2)*1000);
-  }
-}
-
-function showMiss(){
-  document.getElementById('pop').classList.add('show');
-  launchConfetti();
-}
-
-document.getElementById('pop').addEventListener('click',function(e){
-  if(e.target===this)this.classList.remove('show');
-});
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.style.animation='fadeUp 0.5s ease both';});},{threshold:0.1});
+document.querySelectorAll('.glass-card,.trait-card,.mem-card,.emo-card,.thing-item').forEach(el=>obs.observe(el));
 </script>
+</body>
+</html>
