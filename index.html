@@ -5,13 +5,11 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,400;1,600&family=Dancing+Script:wght@700&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;}
-:root{--pink:#ff6b9d;--deep:#c2185b;--purple:#9c27b0;}
-body{font-family:'Nunito',sans-serif;background:#0a0010;min-height:100vh;overflow-x:hidden;}
+body{font-family:'Nunito',sans-serif;background:#0a0010;min-height:100vh;overflow-x:hidden;transition:filter 0.5s;}
 
 @keyframes aurora{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
 @keyframes float{0%,100%{transform:translateY(0px) rotate(0deg);}33%{transform:translateY(-12px) rotate(2deg);}66%{transform:translateY(-6px) rotate(-1deg);}}
 @keyframes floatR{0%,100%{transform:translateY(0px);}50%{transform:translateY(-10px);}}
-@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.12);}}
 @keyframes heartBeat{0%,100%{transform:scale(1);}14%{transform:scale(1.35);}28%{transform:scale(1);}42%{transform:scale(1.2);}70%{transform:scale(1);}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
 @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
@@ -25,59 +23,72 @@ body{font-family:'Nunito',sans-serif;background:#0a0010;min-height:100vh;overflo
 @keyframes pop{0%{transform:scale(0.5);opacity:0;}70%{transform:scale(1.08);}100%{transform:scale(1);opacity:1;}}
 @keyframes wave{0%,100%{transform:rotate(0deg);}25%{transform:rotate(25deg);}75%{transform:rotate(-15deg);}}
 @keyframes gradMove{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
-@keyframes countUp{from{opacity:0;transform:scale(0.5);}to{opacity:1;transform:scale(1);}}
 @keyframes specialPulse{0%,100%{transform:scale(1);box-shadow:0 0 30px rgba(255,107,157,0.3);}50%{transform:scale(1.02);box-shadow:0 0 60px rgba(255,107,157,0.6),0 0 100px rgba(156,39,176,0.3);}}
 @keyframes heartFloat{0%{transform:translateY(0) scale(1);opacity:1;}100%{transform:translateY(-80px) scale(0);opacity:0;}}
-@keyframes slideRight{from{opacity:0;transform:translateX(-30px);}to{opacity:1;transform:translateX(0);}}
 @keyframes ripple{0%{transform:scale(0.6);opacity:1;}100%{transform:scale(2.8);opacity:0;}}
+@keyframes jarBob{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-8px) rotate(-2deg);}}
+@keyframes lidPop{0%{transform:translateY(0) rotate(0);}50%{transform:translateY(-14px) rotate(-15deg);}100%{transform:translateY(0) rotate(0);}}
+@keyframes barFill{from{width:0;}}
+@keyframes vinylSpin{to{transform:rotate(360deg);}}
+@keyframes equalize{0%,100%{height:6px;}50%{height:18px;}}
+@keyframes flipIn{from{transform:rotateY(90deg);opacity:0;}to{transform:rotateY(0);opacity:1;}}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-6px);}75%{transform:translateX(6px);}}
+@keyframes glowBorder{0%,100%{border-color:rgba(255,107,157,0.3);}50%{border-color:rgba(255,107,157,0.9);}}
+@keyframes stampIn{from{transform:scale(2) rotate(-20deg);opacity:0;}to{transform:scale(1) rotate(-12deg);opacity:1;}}
+@keyframes giftShake{0%,100%{transform:rotate(0) scale(1);}20%{transform:rotate(-8deg) scale(1.05);}40%{transform:rotate(8deg) scale(1.05);}60%{transform:rotate(-5deg);}80%{transform:rotate(5deg);}}
+@keyframes lidFly{to{transform:translateY(-60px) rotate(-30deg);opacity:0;}}
+@keyframes flipCard{to{transform:rotateY(180deg);}}
+@keyframes sparkleFloat{0%{transform:translateY(0) scale(0);opacity:0;}50%{opacity:1;transform:scale(1);}100%{transform:translateY(-40px) scale(0);opacity:0;}}
 
 .particle{position:fixed;pointer-events:none;z-index:0;border-radius:50%;animation:float var(--d) ease-in-out infinite;animation-delay:var(--delay);}
 .star-particle{position:fixed;pointer-events:none;z-index:0;font-size:var(--s);animation:floatR var(--d) ease-in-out infinite;animation-delay:var(--delay);}
 
-.hero-bg{
-  background:linear-gradient(-45deg,#1a0030,#2d0050,#400060,#1a0040,#0d0025,#2a0045);
-  background-size:400% 400%;animation:aurora 8s ease infinite;
-  min-height:100vh;display:flex;flex-direction:column;align-items:center;
-  padding:0 20px 60px;position:relative;overflow:hidden;
-}
-
-.nav{width:100%;max-width:700px;display:flex;align-items:center;justify-content:space-between;padding:18px 0 28px;position:relative;z-index:10;}
+.hero-bg{background:linear-gradient(-45deg,#1a0030,#2d0050,#400060,#1a0040,#0d0025,#2a0045);background-size:400% 400%;animation:aurora 8s ease infinite;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:0 20px 60px;position:relative;overflow:hidden;}
+.nav{width:100%;max-width:780px;display:flex;align-items:center;justify-content:space-between;padding:18px 0 28px;position:relative;z-index:10;flex-wrap:wrap;gap:10px;}
 .nav-logo{font-family:'Dancing Script',cursive;font-size:22px;color:#ffb3d4;display:flex;align-items:center;gap:8px;}
 .nav-logo span{animation:heartBeat 2s ease-in-out infinite;display:inline-block;}
-.nav-links{display:flex;gap:4px;flex-wrap:wrap;}
+.nav-links{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;}
 .nav-btn{background:rgba(255,255,255,0.08);border:0.5px solid rgba(255,107,157,0.3);color:rgba(255,180,210,0.8);padding:7px 12px;border-radius:20px;font-size:12px;font-family:'Nunito',sans-serif;font-weight:700;cursor:pointer;transition:all 0.25s;backdrop-filter:blur(4px);}
 .nav-btn:hover,.nav-btn.active{background:rgba(255,107,157,0.25);border-color:rgba(255,107,157,0.7);color:#ffb3d4;transform:translateY(-1px);}
+.tool-row{display:flex;gap:8px;justify-content:center;margin-top:4px;}
+.tool-btn{background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,107,157,0.25);color:rgba(255,200,220,0.7);padding:5px 10px;border-radius:14px;font-size:11px;cursor:pointer;transition:all 0.2s;}
+.tool-btn:hover,.tool-btn.active-theme{background:rgba(255,107,157,0.2);color:#ffb3d4;}
 
 .avatar-section{position:relative;margin-bottom:24px;animation:fadeUp 0.8s ease 0.2s both;}
-.avatar-ring{width:130px;height:130px;border-radius:50%;background:linear-gradient(135deg,#ff6b9d,#c2185b,#9c27b0,#ff6b9d);background-size:300% 300%;animation:borderRotate 3s linear infinite,glowPulse 2s ease-in-out infinite;display:flex;align-items:center;justify-content:center;padding:3px;}
-.avatar-inner{width:100%;height:100%;border-radius:50%;background:linear-gradient(135deg,#4a0050,#2d0040);display:flex;align-items:center;justify-content:center;font-family:'Dancing Script',cursive;font-size:52px;color:#ffb3d4;}
+.avatar-ring{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,#ff6b9d,#c2185b,#9c27b0,#ff6b9d);background-size:300% 300%;animation:borderRotate 3s linear infinite,glowPulse 2s ease-in-out infinite;display:flex;align-items:center;justify-content:center;padding:3px;}
+.avatar-inner{width:100%;height:100%;border-radius:50%;background:linear-gradient(135deg,#4a0050,#2d0040);display:flex;align-items:center;justify-content:center;font-family:'Dancing Script',cursive;font-size:48px;color:#ffb3d4;}
 .online-ring{position:absolute;bottom:6px;right:6px;}
 .online-dot-inner{width:18px;height:18px;background:#00e676;border-radius:50%;border:2px solid #1a0030;position:relative;}
 .online-dot-inner::after{content:'';position:absolute;inset:0;border-radius:50%;background:#00e676;animation:ripple 1.8s ease-out infinite;}
 
-.hero-name{font-family:'Dancing Script',cursive;font-size:clamp(46px,12vw,72px);color:#fff;margin-bottom:6px;animation:nameGlow 3s ease-in-out infinite,fadeUp 0.8s ease 0.4s both;letter-spacing:2px;}
+.hero-name{font-family:'Dancing Script',cursive;font-size:clamp(40px,11vw,64px);color:#fff;margin-bottom:6px;animation:nameGlow 3s ease-in-out infinite,fadeUp 0.8s ease 0.4s both;letter-spacing:2px;}
 .hero-emoji{display:inline-block;animation:wave 2s ease-in-out infinite;}
-.hero-sub{font-size:14px;color:rgba(255,180,210,0.8);margin-bottom:14px;letter-spacing:0.5px;animation:fadeUp 0.8s ease 0.5s both;}
-.status-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,50,50,0.15);border:1px solid rgba(255,100,100,0.4);border-radius:24px;padding:6px 16px;font-size:12px;font-weight:700;color:#ff8a80;margin-bottom:20px;animation:fadeUp 0.8s ease 0.6s both;}
+.hero-sub{font-size:13px;color:rgba(255,180,210,0.8);margin-bottom:14px;letter-spacing:0.5px;animation:fadeUp 0.8s ease 0.5s both;text-align:center;}
+.status-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,50,50,0.15);border:1px solid rgba(255,100,100,0.4);border-radius:24px;padding:6px 16px;font-size:12px;font-weight:700;color:#ff8a80;margin-bottom:18px;animation:fadeUp 0.8s ease 0.6s both;}
 .phone-anim{font-size:16px;animation:phoneRing 2.5s ease-in-out infinite;}
-.badge-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px;animation:fadeUp 0.8s ease 0.7s both;}
-.badge{font-size:11px;font-weight:800;padding:5px 14px;border-radius:20px;backdrop-filter:blur(4px);transition:transform 0.2s;cursor:default;}
-.badge:hover{transform:translateY(-3px) scale(1.05);}
-.b1{background:rgba(255,107,157,0.2);color:#ffb3d4;border:0.5px solid rgba(255,107,157,0.4);}
-.b2{background:rgba(156,39,176,0.2);color:#e1bee7;border:0.5px solid rgba(156,39,176,0.4);}
-.b3{background:rgba(0,188,212,0.15);color:#b2ebf2;border:0.5px solid rgba(0,188,212,0.3);}
-.b4{background:rgba(255,193,7,0.15);color:#fff9c4;border:0.5px solid rgba(255,193,7,0.3);}
-.b5{background:rgba(76,175,80,0.15);color:#c8e6c9;border:0.5px solid rgba(76,175,80,0.3);}
 .cta-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;animation:fadeUp 0.8s ease 0.8s both;}
 .cta-main{background:linear-gradient(135deg,#ff6b9d,#c2185b,#9c27b0);background-size:200% 200%;animation:gradMove 3s ease infinite;color:#fff;border:none;padding:13px 32px;border-radius:30px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer;transition:transform 0.2s;}
 .cta-main:hover{transform:scale(1.06) translateY(-2px);}
 .cta-ghost{background:rgba(255,255,255,0.08);border:1px solid rgba(255,107,157,0.5);color:#ffb3d4;padding:13px 24px;border-radius:30px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s;backdrop-filter:blur(4px);}
 .cta-ghost:hover{background:rgba(255,107,157,0.15);transform:translateY(-2px);}
-.scroll-hint{margin-top:36px;color:rgba(255,180,210,0.5);font-size:12px;letter-spacing:0.1em;display:flex;flex-direction:column;align-items:center;gap:6px;animation:fadeIn 1s ease 1.5s both;}
+.scroll-hint{margin-top:24px;color:rgba(255,180,210,0.5);font-size:12px;letter-spacing:0.1em;display:flex;flex-direction:column;align-items:center;gap:6px;animation:fadeIn 1s ease 1.5s both;}
 .scroll-arrow{font-size:20px;animation:float 1.5s ease-in-out infinite;}
 
+/* Stories row */
+.stories-row{display:flex;gap:14px;overflow-x:auto;padding:6px 4px 4px;margin-top:18px;animation:fadeUp 0.8s ease 0.9s both;max-width:100%;}
+.story{display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0;cursor:pointer;}
+.story-ring{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#ff6b9d,#9c27b0,#ffd166);padding:2.5px;display:flex;align-items:center;justify-content:center;}
+.story-inner{width:100%;height:100%;border-radius:50%;background:#1a0030;display:flex;align-items:center;justify-content:center;font-size:20px;}
+.story-label{font-size:10px;color:rgba(255,180,210,0.7);font-weight:700;}
+
+/* Countdown */
+.countdown-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:12px 0;}
+.cd-box{background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,107,157,0.3);border-radius:14px;padding:14px 16px;text-align:center;min-width:64px;}
+.cd-num{font-family:'Dancing Script',cursive;font-size:28px;color:#ffb3d4;font-weight:700;}
+.cd-label{font-size:10px;color:rgba(255,180,210,0.5);letter-spacing:0.1em;text-transform:uppercase;margin-top:2px;}
+
 .main-content{background:#0f0018;position:relative;z-index:1;}
-.page-sec{display:none;padding:32px 16px 60px;max-width:660px;margin:0 auto;}
+.page-sec{display:none;padding:32px 16px 60px;max-width:700px;margin:0 auto;}
 .page-sec.visible{display:block;animation:fadeUp 0.4s ease both;}
 .sec-header{text-align:center;margin-bottom:28px;padding-bottom:20px;border-bottom:0.5px solid rgba(255,107,157,0.2);}
 .sec-title-main{font-family:'Dancing Script',cursive;font-size:34px;color:#ffb3d4;margin-bottom:6px;}
@@ -152,9 +163,9 @@ body{font-family:'Nunito',sans-serif;background:#0a0010;min-height:100vh;overflo
 .send-btn:hover{transform:scale(1.05);}
 .sent-ok{font-size:13px;color:#69ff90;display:none;margin-top:10px;font-weight:700;animation:fadeUp 0.3s ease both;}
 
-.pop-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(6px);}
+.pop-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(6px);padding:20px;}
 .pop-overlay.show{display:flex;}
-.pop-box{background:linear-gradient(135deg,#1a0030,#2d0050);border:1px solid rgba(255,107,157,0.4);border-radius:24px;padding:32px 28px;max-width:320px;width:90%;text-align:center;animation:pop 0.4s ease both;box-shadow:0 0 60px rgba(255,107,157,0.25);}
+.pop-box{background:linear-gradient(135deg,#1a0030,#2d0050);border:1px solid rgba(255,107,157,0.4);border-radius:24px;padding:32px 28px;max-width:340px;width:100%;text-align:center;animation:pop 0.4s ease both;box-shadow:0 0 60px rgba(255,107,157,0.25);max-height:80vh;overflow-y:auto;}
 .pop-em{font-size:48px;display:block;margin-bottom:14px;animation:heartBeat 1.5s ease-in-out infinite;}
 .pop-title{font-family:'Dancing Script',cursive;font-size:26px;color:#ffb3d4;margin-bottom:10px;}
 .pop-body{font-size:13px;color:rgba(255,200,220,0.75);line-height:1.75;margin-bottom:20px;}
@@ -162,67 +173,199 @@ body{font-family:'Nunito',sans-serif;background:#0a0010;min-height:100vh;overflo
 .confetti-piece{position:fixed;pointer-events:none;z-index:999;animation:confettiFall linear forwards;}
 .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,107,157,0.4),transparent);margin:20px 0;}
 
-/* ✨ SPECIAL 25 DAYS CARD */
-.special-25{
-  position:relative;overflow:hidden;
-  background:linear-gradient(135deg,rgba(255,107,157,0.15),rgba(156,39,176,0.2),rgba(255,107,157,0.1));
-  border:1.5px solid rgba(255,107,157,0.5);
-  border-radius:24px;padding:32px 24px;margin-bottom:16px;
-  text-align:center;
-  animation:specialPulse 3s ease-in-out infinite;
-}
-.special-25::before{
-  content:'';position:absolute;inset:0;border-radius:24px;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.04),transparent);
-  animation:shimmer 3s linear infinite;
-  background-size:200% auto;
-}
-.days-number{
-  font-family:'Dancing Script',cursive;
-  font-size:80px;font-weight:700;
-  background:linear-gradient(135deg,#ff6b9d,#fff,#e1bee7);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  animation:countUp 1s ease both,nameGlow 3s ease-in-out infinite;
-  line-height:1;margin-bottom:4px;
-  display:block;
-}
+.special-25{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(255,107,157,0.15),rgba(156,39,176,0.2),rgba(255,107,157,0.1));border:1.5px solid rgba(255,107,157,0.5);border-radius:24px;padding:32px 24px;margin-bottom:16px;text-align:center;animation:specialPulse 3s ease-in-out infinite;}
+.special-25::before{content:'';position:absolute;inset:0;border-radius:24px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.04),transparent);animation:shimmer 3s linear infinite;background-size:200% auto;}
+.days-number{font-family:'Dancing Script',cursive;font-size:80px;font-weight:700;background:linear-gradient(135deg,#ff6b9d,#fff,#e1bee7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:nameGlow 3s ease-in-out infinite;line-height:1;margin-bottom:4px;display:block;}
 .days-label{font-size:13px;letter-spacing:0.3em;color:rgba(255,180,210,0.6);text-transform:uppercase;margin-bottom:20px;}
-.special-line{
-  font-family:'Playfair Display',serif;font-style:italic;
-  font-size:16px;color:rgba(255,220,235,0.9);
-  line-height:1.9;margin-bottom:18px;
-}
-.special-line b{
-  color:#ffb3d4;font-style:normal;font-family:'Dancing Script',cursive;font-size:19px;
-}
-.monkey-thanks{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,193,7,0.12);
-  border:0.5px solid rgba(255,193,7,0.35);
-  border-radius:20px;padding:10px 20px;
-  font-size:13px;font-weight:800;color:#ffe082;
-  animation:float 3s ease-in-out infinite;
-}
+.special-line{font-family:'Playfair Display',serif;font-style:italic;font-size:16px;color:rgba(255,220,235,0.9);line-height:1.9;margin-bottom:18px;}
+.special-line b{color:#ffb3d4;font-style:normal;font-family:'Dancing Script',cursive;font-size:19px;}
+.monkey-thanks{display:inline-flex;align-items:center;gap:8px;background:rgba(255,193,7,0.12);border:0.5px solid rgba(255,193,7,0.35);border-radius:20px;padding:10px 20px;font-size:13px;font-weight:800;color:#ffe082;animation:float 3s ease-in-out infinite;}
 .float-hearts{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
-.fh{
-  position:absolute;font-size:18px;
-  animation:heartFloat 4s ease-out infinite;
-  animation-delay:var(--d);
-  left:var(--l);bottom:-20px;
-}
+.fh{position:absolute;font-size:18px;animation:heartFloat 4s ease-out infinite;animation-delay:var(--d);left:var(--l);bottom:-20px;}
+
+/* fun zone reused */
+.fact-display{font-family:'Playfair Display',serif;font-style:italic;font-size:15px;color:#ffd6e8;line-height:1.8;text-align:center;padding:20px;min-height:90px;display:flex;align-items:center;justify-content:center;animation:fadeUp 0.4s ease both;}
+.jar-wrap{display:flex;flex-direction:column;align-items:center;padding:10px 0;}
+.jar{font-size:90px;animation:jarBob 4s ease-in-out infinite;cursor:pointer;display:inline-block;margin-bottom:14px;}
+.jar.opening{animation:lidPop 0.6s ease;}
+.jar-memory{background:rgba(255,107,157,0.08);border:0.5px solid rgba(255,107,157,0.3);border-radius:16px;padding:18px 20px;margin-top:10px;font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:#ffd6e8;text-align:center;line-height:1.8;display:none;width:100%;}
+.jar-memory.show{display:block;animation:flipIn 0.5s ease both;}
+
+.certificate{background:linear-gradient(135deg,#fff8f0,#fff0f5);border:6px double #d4a373;border-radius:14px;padding:30px 24px;text-align:center;color:#5c3d2e;position:relative;overflow:hidden;}
+.cert-corner{position:absolute;font-size:24px;opacity:0.5;}
+.cert-tl{top:8px;left:10px;}.cert-tr{top:8px;right:10px;}.cert-bl{bottom:8px;left:10px;}.cert-br{bottom:8px;right:10px;}
+.cert-header{font-family:'Dancing Script',cursive;font-size:14px;letter-spacing:0.3em;color:#b08968;text-transform:uppercase;margin-bottom:6px;}
+.cert-title{font-family:'Playfair Display',serif;font-weight:700;font-size:24px;color:#7c4a2d;margin-bottom:14px;}
+.cert-divider{width:60px;height:2px;background:#d4a373;margin:0 auto 14px;}
+.cert-awarded{font-size:11px;letter-spacing:0.2em;color:#a98467;text-transform:uppercase;margin-bottom:6px;}
+.cert-name{font-family:'Dancing Script',cursive;font-size:42px;color:#9c6644;margin-bottom:14px;}
+.cert-body{font-size:13px;color:#6f4e37;line-height:1.8;margin-bottom:16px;}
+.cert-stamp{display:inline-block;border:3px solid #c08552;border-radius:50%;padding:10px 16px;font-size:11px;font-weight:800;color:#c08552;letter-spacing:0.1em;transform:rotate(-12deg);animation:stampIn 0.6s ease 0.3s both;}
+.download-btn{margin-top:18px;background:linear-gradient(135deg,#ff6b9d,#c2185b);color:#fff;border:none;padding:11px 28px;border-radius:24px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;transition:transform 0.2s;}
+.download-btn:hover{transform:scale(1.05);}
+
+.level-card{text-align:center;}
+.level-pct{font-family:'Dancing Script',cursive;font-size:48px;color:#ffb3d4;animation:nameGlow 3s ease-in-out infinite;margin-bottom:6px;}
+.bar-track{width:100%;height:18px;background:rgba(255,255,255,0.06);border-radius:20px;overflow:hidden;border:0.5px solid rgba(255,107,157,0.2);margin-bottom:10px;}
+.bar-fill{height:100%;background:linear-gradient(90deg,#ff6b9d,#9c27b0,#ff6b9d);background-size:200% auto;animation:barFill 1.5s ease both,gradMove 3s ease infinite;border-radius:20px;}
+.level-tag{font-size:12px;color:rgba(255,180,210,0.6);letter-spacing:0.1em;}
+
+.milestone-track{display:flex;flex-direction:column;gap:10px;}
+.milestone-item{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.03);border:0.5px solid rgba(255,107,157,0.18);border-radius:14px;padding:14px 18px;transition:all 0.2s;}
+.milestone-item:hover{background:rgba(255,107,157,0.07);transform:translateX(4px);}
+.ms-icon{font-size:24px;width:36px;text-align:center;flex-shrink:0;}
+.ms-text{flex:1;}
+.ms-title{font-size:13px;font-weight:800;color:#ffb3d4;}
+.ms-sub{font-size:11px;color:rgba(255,180,210,0.5);margin-top:2px;}
+.ms-done{color:#69ff90;font-weight:800;font-size:12px;}
+.ms-pending{color:rgba(255,180,210,0.4);font-weight:800;font-size:12px;}
+
+.secret-btn-wrap{text-align:center;padding:30px 10px;}
+.secret-btn{background:linear-gradient(135deg,#9c27b0,#6a1b9a);color:#fff;border:none;padding:16px 36px;border-radius:30px;font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;cursor:pointer;transition:all 0.25s;animation:glowBorder 2s ease-in-out infinite;border:2px solid rgba(255,107,157,0.5);}
+.secret-btn:hover{transform:scale(1.05);}
+.secret-content{display:none;margin-top:20px;animation:fadeUp 0.5s ease both;}
+.secret-content.show{display:block;}
+
+.music-player{background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,107,157,0.2);border-radius:18px;padding:20px;display:flex;align-items:center;gap:16px;}
+.vinyl{width:64px;height:64px;border-radius:50%;background:radial-gradient(circle at center,#222 0%,#222 30%,#ff6b9d 31%,#ff6b9d 35%,#222 36%);flex-shrink:0;}
+.vinyl.spin{animation:vinylSpin 3s linear infinite;}
+.music-info{flex:1;}
+.music-title{font-size:13px;font-weight:800;color:#ffb3d4;}
+.music-artist{font-size:11px;color:rgba(255,180,210,0.5);margin-top:2px;}
+.music-bars{display:flex;gap:3px;align-items:flex-end;height:18px;margin-top:8px;}
+.bar{width:3px;background:#ff6b9d;border-radius:2px;height:6px;}
+.bar.playing{animation:equalize 0.6s ease-in-out infinite alternate;}
+.bar:nth-child(2){animation-delay:0.1s;}
+.bar:nth-child(3){animation-delay:0.2s;}
+.bar:nth-child(4){animation-delay:0.3s;}
+.bar:nth-child(5){animation-delay:0.15s;}
+.play-btn{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#ff6b9d,#c2185b);border:none;color:#fff;font-size:18px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:transform 0.2s;}
+.play-btn:hover{transform:scale(1.1);}
+
+.compliment-box{background:linear-gradient(135deg,rgba(255,107,157,0.1),rgba(156,39,176,0.1));border:0.5px solid rgba(255,107,157,0.3);border-radius:18px;padding:24px;text-align:center;margin-bottom:14px;min-height:80px;display:flex;align-items:center;justify-content:center;}
+.compliment-text{font-family:'Playfair Display',serif;font-style:italic;font-size:16px;color:#ffd6e8;animation:fadeUp 0.4s ease both;}
+
+.quiz-card{background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,107,157,0.2);border-radius:18px;padding:22px;margin-bottom:14px;}
+.quiz-q{font-size:14px;font-weight:800;color:#ffb3d4;margin-bottom:14px;line-height:1.6;}
+.quiz-options{display:flex;flex-direction:column;gap:10px;}
+.quiz-opt{background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,107,157,0.25);border-radius:12px;padding:12px 16px;font-size:13px;color:#ffd6e8;cursor:pointer;transition:all 0.2s;text-align:left;font-family:'Nunito',sans-serif;font-weight:600;}
+.quiz-opt:hover{background:rgba(255,107,157,0.1);border-color:rgba(255,107,157,0.5);}
+.quiz-opt.correct{background:rgba(0,220,100,0.15);border-color:#69ff90;color:#c8ffd9;}
+.quiz-opt.wrong{background:rgba(255,60,60,0.12);border-color:#ff6b6b;color:#ffc8c8;animation:shake 0.4s ease;}
+.quiz-feedback{margin-top:12px;font-size:13px;font-family:'Playfair Display',serif;font-style:italic;color:#ffe082;display:none;animation:fadeUp 0.3s ease both;}
+.quiz-feedback.show{display:block;}
+.quiz-score{text-align:center;font-size:13px;color:rgba(255,180,210,0.5);margin-bottom:14px;}
+
+.polaroid-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.polaroid{background:#fff;border-radius:6px;padding:10px 10px 24px;box-shadow:0 8px 20px rgba(0,0,0,0.4);transition:transform 0.3s;cursor:pointer;transform:rotate(var(--rot));position:relative;}
+.polaroid:hover{transform:rotate(0deg) scale(1.05);}
+.polaroid-img{width:100%;aspect-ratio:1;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:38px;background:linear-gradient(135deg,var(--c1),var(--c2));overflow:hidden;}
+.polaroid-img img{width:100%;height:100%;object-fit:cover;}
+.polaroid-cap{font-family:'Dancing Script',cursive;font-size:16px;color:#333;text-align:center;margin-top:8px;}
+.polaroid input{display:none;}
+
+/* === NEW SECTION 2 STYLES === */
+
+/* Spin wheel */
+.wheel-wrap{display:flex;flex-direction:column;align-items:center;gap:18px;}
+.wheel-outer{position:relative;width:240px;height:240px;}
+.wheel{width:100%;height:100%;border-radius:50%;border:6px solid #ffb3d4;transition:transform 4s cubic-bezier(0.17,0.67,0.21,1.01);position:relative;overflow:hidden;
+  background:conic-gradient(#ff6b9d 0deg 45deg,#9c27b0 45deg 90deg,#ff8fab 90deg 135deg,#7c3aed 135deg 180deg,#ff6b9d 180deg 225deg,#9c27b0 225deg 270deg,#ff8fab 270deg 315deg,#7c3aed 315deg 360deg);}
+.wheel-label{position:absolute;font-size:10px;font-weight:800;color:#fff;text-align:center;width:90px;left:50%;top:50%;transform-origin:0 0;}
+.wheel-pointer{position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:28px;z-index:5;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.4));}
+.wheel-result{font-family:'Playfair Display',serif;font-style:italic;font-size:16px;color:#ffd6e8;text-align:center;min-height:30px;animation:fadeUp 0.4s ease both;}
+
+/* Flip cards */
+.flip-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.flip-card{perspective:1000px;height:120px;cursor:pointer;}
+.flip-inner{position:relative;width:100%;height:100%;transition:transform 0.6s;transform-style:preserve-3d;}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-front,.flip-back{position:absolute;inset:0;backface-visibility:hidden;border-radius:14px;display:flex;align-items:center;justify-content:center;text-align:center;padding:14px;font-size:12px;}
+.flip-front{background:rgba(255,107,157,0.1);border:0.5px solid rgba(255,107,157,0.3);color:#ffb3d4;font-weight:800;}
+.flip-back{background:rgba(156,39,176,0.15);border:0.5px solid rgba(156,39,176,0.4);color:#ffd6e8;font-family:'Playfair Display',serif;font-style:italic;transform:rotateY(180deg);line-height:1.5;}
+
+/* Puzzle */
+.puzzle-input-row{display:flex;gap:10px;margin-top:14px;}
+.puzzle-input{flex:1;background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,107,157,0.3);border-radius:12px;padding:10px 14px;color:#ffd6e8;font-family:'Nunito',sans-serif;font-size:13px;outline:none;}
+.puzzle-input:focus{border-color:rgba(255,107,157,0.7);}
+.puzzle-btn{background:linear-gradient(135deg,#ff6b9d,#c2185b);color:#fff;border:none;padding:10px 20px;border-radius:12px;font-weight:800;font-size:13px;cursor:pointer;}
+.puzzle-msg{margin-top:10px;font-size:12px;color:#ff8a80;display:none;}
+.puzzle-msg.show{display:block;animation:shake 0.4s ease;}
+.puzzle-reveal{display:none;margin-top:16px;}
+.puzzle-reveal.show{display:block;animation:fadeUp 0.5s ease both;}
+
+/* Gift box */
+.gift-wrap{text-align:center;padding:10px 0;}
+.gift{font-size:90px;cursor:pointer;display:inline-block;animation:giftShake 2s ease-in-out infinite;}
+.gift.opened{animation:none;}
+.gift.opened .gift-lid{animation:lidFly 0.6s ease forwards;}
+.gift-reveal{display:none;margin-top:18px;}
+.gift-reveal.show{display:block;animation:fadeUp 0.5s ease both;}
+
+/* Vibe-o-meter */
+.vibe-slider{width:100%;-webkit-appearance:none;height:10px;border-radius:10px;background:linear-gradient(90deg,#60a5fa,#ff6b9d,#fbbf24,#f87171);outline:none;margin:18px 0 10px;}
+.vibe-slider::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:#fff;border:3px solid #ff6b9d;cursor:pointer;}
+.vibe-result{text-align:center;font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:#ffd6e8;line-height:1.7;min-height:50px;}
+.vibe-emoji{font-size:36px;text-align:center;display:block;margin-bottom:8px;}
+
+/* Inside jokes */
+.joke-grid{display:flex;flex-direction:column;gap:10px;}
+.ij-item{background:rgba(255,255,255,0.03);border:0.5px solid rgba(255,107,157,0.18);border-radius:14px;padding:14px 18px;cursor:pointer;transition:all 0.2s;}
+.ij-item:hover{background:rgba(255,107,157,0.08);}
+.ij-q{font-size:13px;font-weight:800;color:#ffb3d4;}
+.ij-a{font-size:12px;color:rgba(255,200,220,0.7);margin-top:8px;display:none;font-family:'Playfair Display',serif;font-style:italic;line-height:1.6;}
+.ij-a.show{display:block;animation:fadeUp 0.3s ease both;}
+
+/* Timeline */
+.timeline{position:relative;padding-left:30px;}
+.timeline::before{content:'';position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:linear-gradient(to bottom,#ff6b9d,#9c27b0,#ff6b9d);}
+.tl-item{position:relative;margin-bottom:22px;}
+.tl-dot{position:absolute;left:-30px;top:2px;width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,#ff6b9d,#9c27b0);border:3px solid #0f0018;box-shadow:0 0 0 2px rgba(255,107,157,0.3);}
+.tl-day{font-size:11px;color:#ffb3d4;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;}
+.tl-text{font-size:13px;color:rgba(255,200,220,0.7);line-height:1.6;}
+
+/* Affirmation */
+.affirm-card{background:linear-gradient(135deg,rgba(255,107,157,0.12),rgba(156,39,176,0.14));border:0.5px solid rgba(255,107,157,0.3);border-radius:20px;padding:28px;text-align:center;}
+.affirm-text{font-family:'Dancing Script',cursive;font-size:24px;color:#ffd6e8;line-height:1.6;animation:fadeUp 0.5s ease both;min-height:80px;display:flex;align-items:center;justify-content:center;}
+
+/* Photo upload */
+.upload-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.upload-slot{aspect-ratio:1;border:2px dashed rgba(255,107,157,0.3);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;overflow:hidden;position:relative;background:rgba(255,255,255,0.02);}
+.upload-slot:hover{border-color:rgba(255,107,157,0.6);background:rgba(255,107,157,0.05);}
+.upload-slot img{width:100%;height:100%;object-fit:cover;}
+.upload-icon{font-size:24px;color:rgba(255,180,210,0.4);}
+.upload-label{font-size:11px;color:rgba(255,180,210,0.4);margin-top:4px;}
+.upload-slot input{display:none;}
+
+/* Share */
+.share-btn{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;padding:14px 32px;border-radius:30px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:10px;transition:transform 0.2s;}
+.share-btn:hover{transform:scale(1.05);}
+
+/* Report card */
+.report-grid{display:flex;flex-direction:column;gap:8px;}
+.report-row{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.03);border:0.5px solid rgba(255,107,157,0.15);border-radius:12px;padding:12px 16px;}
+.report-subj{font-size:13px;color:rgba(255,200,220,0.8);font-weight:700;}
+.report-grade{font-family:'Dancing Script',cursive;font-size:24px;font-weight:700;}
+.grade-A{color:#69ff90;}
+.grade-F{color:#ff6b6b;}
+.grade-S{color:#ffd166;}
+
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(100px);background:linear-gradient(135deg,#ff6b9d,#c2185b);color:#fff;padding:12px 24px;border-radius:24px;font-size:13px;font-weight:700;z-index:300;transition:transform 0.3s;box-shadow:0 8px 24px rgba(0,0,0,0.3);}
+.toast.show{transform:translateX(-50%) translateY(0);}
 </style>
 </head>
-<body>
+<body id="body-root">
 
 <div id="confetti-c" style="position:fixed;inset:0;pointer-events:none;z-index:999;overflow:hidden;"></div>
 <div id="particles-c" style="position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;"></div>
+<div class="toast" id="toast"></div>
 
 <div class="pop-overlay" id="pop">
   <div class="pop-box">
     <span class="pop-em">📵</span>
     <div class="pop-title">Declined. Again.</div>
-    <div class="pop-body">She watched the phone ring, smiled, declined it, and immediately opened Snapchat to type you a 500-word text. That's Palak. That's love. 💕</div>
-    <button class="pop-close" onclick="closePop()">Okay I love her as a......😭</button>
+    <div class="pop-body">She watched the phone ring, smiled, declined it, and immediately opened WhatsApp to type you a 500-word text. That's Palak. That's love. 💕</div>
+    <button class="pop-close" onclick="closePop()">Okay I love her 😭</button>
   </div>
 </div>
 
@@ -234,6 +377,8 @@ body{font-family:'Nunito',sans-serif;background:#0a0010;min-height:100vh;overflo
       <button class="nav-btn" onclick="showPage('calls',this)">Calls📵</button>
       <button class="nav-btn" onclick="showPage('funny',this)">Funny</button>
       <button class="nav-btn" onclick="showPage('feels',this)">Feels💌</button>
+      <button class="nav-btn" onclick="showPage('fun',this)">Fun🎮</button>
+      <button class="nav-btn" onclick="showPage('more',this)">More✨</button>
       <button class="nav-btn" onclick="showPage('msg',this)">Message</button>
     </div>
   </nav>
@@ -247,24 +392,34 @@ body{font-family:'Nunito',sans-serif;background:#0a0010;min-height:100vh;overflo
   <div class="hero-sub">The girl who texts novels but declines every call 📱✨</div>
   <div class="status-pill"><span class="phone-anim">📵</span> Call declined · just now · She's online though 😭</div>
 
-  <div class="badge-row">
-    <span class="badge b1">Funny soul</span>
-    <span class="badge b2">Good heart</span>
-    <span class="badge b3">Text queen</span>
-    <span class="badge b4">No-call zone</span>
-    <span class="badge b5">Chaos bestie</span>
-    <span class="badge b1">Irreplaceable</span>
-  </div>
-
   <div class="cta-row">
     <button class="cta-main" onclick="showMiss()">I miss you so much 💕</button>
-    <button class="cta-ghost" onclick="showPage('feels',document.querySelectorAll('.nav-btn')[3])">Read the letter 💌</button>
+    <button class="cta-ghost" onclick="showPage('more',document.querySelectorAll('.nav-btn')[5])">Explore More ✨</button>
   </div>
+
+  <div class="tool-row">
+    <button class="tool-btn" onclick="setTheme(0)" id="theme0">🌸 Pink</button>
+    <button class="tool-btn" onclick="setTheme(1)" id="theme1">💜 Purple</button>
+    <button class="tool-btn" onclick="setTheme(2)" id="theme2">🌅 Sunset</button>
+    <button class="tool-btn" onclick="setTheme(3)" id="theme3">🌌 Galaxy</button>
+    <button class="tool-btn" id="music-toggle" onclick="toggleMusic()">🎵 Music: Off</button>
+  </div>
+
+  <!-- Stories row -->
+  <div class="stories-row">
+    <div class="story" onclick="showPage('home',document.querySelectorAll('.nav-btn')[0])"><div class="story-ring"><div class="story-inner">🌸</div></div><div class="story-label">Home</div></div>
+    <div class="story" onclick="showPage('calls',document.querySelectorAll('.nav-btn')[1])"><div class="story-ring"><div class="story-inner">📵</div></div><div class="story-label">Calls</div></div>
+    <div class="story" onclick="showPage('funny',document.querySelectorAll('.nav-btn')[2])"><div class="story-ring"><div class="story-inner">😂</div></div><div class="story-label">Funny</div></div>
+    <div class="story" onclick="showPage('feels',document.querySelectorAll('.nav-btn')[3])"><div class="story-ring"><div class="story-inner">💌</div></div><div class="story-label">Feels</div></div>
+    <div class="story" onclick="showPage('fun',document.querySelectorAll('.nav-btn')[4])"><div class="story-ring"><div class="story-inner">🎮</div></div><div class="story-label">Fun</div></div>
+    <div class="story" onclick="showPage('more',document.querySelectorAll('.nav-btn')[5])"><div class="story-ring"><div class="story-inner">✨</div></div><div class="story-label">More</div></div>
+  </div>
+
   <div class="scroll-hint"><span>scroll down</span><span class="scroll-arrow">↓</span></div>
 </div>
 
 <div class="main-content">
-<div style="max-width:660px;margin:0 auto;padding:0 16px;">
+<div style="max-width:700px;margin:0 auto;padding:0 16px;">
 
 <div id="page-home" class="page-sec visible">
   <div class="sec-header">
@@ -272,7 +427,6 @@ body{font-family:'Nunito',sans-serif;background:#0a0010;min-height:100vh;overflo
     <div class="sec-sub">the most unhinged wonderful person you know</div>
   </div>
 
-  <!-- ✨ 25 DAYS SPECIAL CARD -->
   <div class="special-25">
     <div class="float-hearts">
       <span class="fh" style="--l:10%;--d:0s;">💕</span>
@@ -292,9 +446,14 @@ body{font-family:'Nunito',sans-serif;background:#0a0010;min-height:100vh;overflo
       and just… <b>fit.</b> Like they were always supposed to be there.<br><br>
       That's you, Palak. That's exactly what you did. 💕
     </div>
-    <div class="monkey-thanks">
-      🐒 Thank you monkey for finding her for me 🐒
-    </div>
+    <div class="monkey-thanks">🐒 Thank you monkey for finding her for me 🐒</div>
+  </div>
+
+  <!-- Countdown -->
+  <div class="glass-card">
+    <div class="card-title">⏳ Countdown to Next Hangout</div>
+    <div class="countdown-row" id="countdown-row"></div>
+    <div style="text-align:center;font-size:12px;color:rgba(255,180,210,0.5);">because every day until then feels too long 💕</div>
   </div>
 
   <div class="trait-grid">
@@ -374,16 +533,6 @@ body{font-family:'Nunito',sans-serif;background:#0a0010;min-height:100vh;overflo
     <div class="thing-item">📵 <b>"calling you soon"</b> — composing a 1000-word voice note instead</div>
     <div class="thing-item">😂 <b>Laughs at her own joke</b> before she even finishes telling it</div>
   </div>
-  <div class="glass-card">
-    <div class="card-title">Palak starter pack 🎒</div>
-    <div class="card-body" style="display:flex;flex-direction:column;gap:9px;margin-top:6px;">
-      <div style="padding:9px 14px;background:rgba(255,107,157,0.08);border-radius:10px;font-size:13px;color:rgba(255,200,220,0.8);">📵 Declines call · immediately texts a 40-message explanation</div>
-      <div style="padding:9px 14px;background:rgba(156,39,176,0.08);border-radius:10px;font-size:13px;color:rgba(255,200,220,0.8);">😂 Makes you laugh then gets offended you're laughing</div>
-      <div style="padding:9px 14px;background:rgba(0,188,212,0.06);border-radius:10px;font-size:13px;color:rgba(255,200,220,0.8);">💬 Reads your message, closes app, replies 6 hrs later with "lol haha yeah"</div>
-      <div style="padding:9px 14px;background:rgba(255,193,7,0.06);border-radius:10px;font-size:13px;color:rgba(255,200,220,0.8);">🌙 Says "good night" then talks until 2:30am</div>
-      <div style="padding:9px 14px;background:rgba(76,175,80,0.06);border-radius:10px;font-size:13px;color:rgba(255,200,220,0.8);">🤌 Gives everyone the best advice except herself</div>
-    </div>
-  </div>
 </div>
 
 <div id="page-feels" class="page-sec">
@@ -404,6 +553,17 @@ body{font-family:'Nunito',sans-serif;background:#0a0010;min-height:100vh;overflo
   <div class="mem-card"><div class="mem-icon-c">💬</div><div><div class="mem-t">Her texts are basically therapy</div><div class="mem-b">No degree. No couch. Just Palak at 11pm telling you exactly what you needed to hear.</div></div></div>
   <div class="mem-card"><div class="mem-icon-c">🐒</div><div><div class="mem-t">Thank you, monkey 🐒</div><div class="mem-b">Whoever or whatever brought Palak into this life — we owe you everything. Best introduction ever made.</div></div></div>
 
+  <!-- Timeline -->
+  <div class="sec-title-main shimmer-text" style="font-size:22px;margin:20px 0 14px;">Our Story So Far 🗓️</div>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-day">Day 1</div><div class="tl-text">First conversation. No idea this would turn into... whatever this beautiful chaos is now. 🌸</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-day">Day 5</div><div class="tl-text">First time she declined a call and immediately sent 12 texts instead. The pattern was set. 📵</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-day">Day 10</div><div class="tl-text">First proper 2am conversation about absolutely nothing — and everything. 🌙</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-day">Day 15</div><div class="tl-text">Realized her texts had become the best part of checking your phone. 💬</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-day">Day 20</div><div class="tl-text">First inside joke that makes zero sense to anyone else. Still funny every time. 😂</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-day">Day 25</div><div class="tl-text">This website happened. Because words alone weren't enough anymore. 💕</div></div>
+  </div>
+
   <div class="divider"></div>
 
   <div class="emo-card">
@@ -418,6 +578,284 @@ body{font-family:'Nunito',sans-serif;background:#0a0010;min-height:100vh;overflo
       Miss you. Every day. Please don't call — just text. I know you will. 💕"
     </div>
   </div>
+</div>
+
+<!-- ============ FUN ZONE ============ -->
+<div id="page-fun" class="page-sec">
+  <div class="sec-header">
+    <div class="sec-title-main shimmer-text">Fun Zone 🎮</div>
+    <div class="sec-sub">10 reasons this page is unfair to everyone else</div>
+  </div>
+
+  <div class="glass-card">
+    <div class="card-title">🎲 Random Palak Fact</div>
+    <div class="fact-display" id="fact-display">Tap below to discover a Palak fact 🌸</div>
+    <div style="text-align:center;"><button class="reveal-btn" onclick="randomFact()">Generate Fact 🎲</button></div>
+  </div>
+
+  <div class="glass-card">
+    <div class="card-title">🫙 Memory Jar</div>
+    <div class="jar-wrap">
+      <div class="jar" id="jar" onclick="openJar()">🫙</div>
+      <button class="reveal-btn" onclick="openJar()">Open a Memory ✨</button>
+      <div class="jar-memory" id="jar-memory"></div>
+    </div>
+  </div>
+
+  <div class="glass-card">
+    <div class="card-title">🏅 Friendship Certificate</div>
+    <div class="certificate" id="certificate">
+      <span class="cert-corner cert-tl">🌸</span>
+      <span class="cert-corner cert-tr">🌸</span>
+      <span class="cert-corner cert-bl">🌸</span>
+      <span class="cert-corner cert-br">🌸</span>
+      <div class="cert-header">Certificate of</div>
+      <div class="cert-title">Amazing Friendship</div>
+      <div class="cert-divider"></div>
+      <div class="cert-awarded">Proudly Awarded To</div>
+      <div class="cert-name">Palak</div>
+      <div class="cert-body">For being awesome, chaotic, hilarious, endlessly kind, and completely unforgettable — even if she never picks up the phone. 📵💕</div>
+      <div class="cert-stamp">★ CERTIFIED ★</div>
+    </div>
+    <div style="text-align:center;"><button class="download-btn" onclick="downloadCert()">⬇ Download Certificate</button></div>
+  </div>
+
+  <div class="glass-card level-card">
+    <div class="card-title">📈 Friendship Level</div>
+    <div class="level-pct" id="level-pct">95%</div>
+    <div class="bar-track"><div class="bar-fill" id="level-bar" style="width:95%;"></div></div>
+    <div class="level-tag">and rising every single day 💕</div>
+  </div>
+
+  <div class="glass-card">
+    <div class="card-title">🎯 Friendship Milestones</div>
+    <div class="milestone-track">
+      <div class="milestone-item"><div class="ms-icon">✅</div><div class="ms-text"><div class="ms-title">25 Days Completed</div><div class="ms-sub">The best 25 days yet</div></div><div class="ms-done">DONE</div></div>
+      <div class="milestone-item"><div class="ms-icon">🎯</div><div class="ms-text"><div class="ms-title">Next Goal: 50 Days</div><div class="ms-sub">25 more days of chaos & laughs</div></div><div class="ms-pending">SOON</div></div>
+      <div class="milestone-item"><div class="ms-icon">🏆</div><div class="ms-text"><div class="ms-title">Ultimate Goal: 100 Days</div><div class="ms-sub">And hopefully... one actual phone call 😂</div></div><div class="ms-pending">FUTURE</div></div>
+    </div>
+  </div>
+
+  <div class="glass-card">
+    <div class="card-title">🔐 Secret Message</div>
+    <div class="secret-btn-wrap">
+      <button class="secret-btn" id="secret-btn" onclick="openSecret()">Click only if you're Palak 👀</button>
+      <div class="secret-content" id="secret-content">
+        <div class="emo-card" style="margin-top:16px;">
+          <span class="emo-icon">💌</span>
+          <div class="emo-title">If you're reading this, Palak...</div>
+          <div class="emo-body">
+            "Hi. Yes, you. The one who never calls. 😂<br><br>
+            I just wanted one place where you could see, in writing, how much you actually mean to me. In just 25 days you became one of the best parts of my life — your chaos, your humour, your heart, all of it.<br><br>
+            Thank you for being exactly who you are. Don't ever change (except maybe... call me once? just once? 😭💕)"
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="glass-card">
+    <div class="card-title">🎵 Now Playing</div>
+    <div class="music-player">
+      <div class="vinyl" id="vinyl"></div>
+      <div class="music-info">
+        <div class="music-title">Voice Note #47</div>
+        <div class="music-artist">Artist: Palak 🌸 · 12:48</div>
+        <div class="music-bars" id="music-bars"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+      </div>
+      <button class="play-btn" id="play-btn" onclick="togglePlay()">▶</button>
+    </div>
+  </div>
+
+  <div class="glass-card">
+    <div class="card-title">🌸 Compliment Generator</div>
+    <div class="compliment-box"><div class="compliment-text" id="compliment-text">Click the button for a Palak-sized compliment 💕</div></div>
+    <div style="text-align:center;"><button class="reveal-btn" onclick="generateCompliment()">Generate Compliment ✨</button></div>
+  </div>
+
+  <div class="glass-card">
+    <div class="card-title">🎮 Mini Quiz: How well do you know Palak?</div>
+    <div class="quiz-score" id="quiz-score">Score: 0 / 0</div>
+    <div class="quiz-card" id="quiz-card"></div>
+  </div>
+
+  <div class="glass-card">
+    <div class="card-title">🖼️ Polaroid Gallery (tap a card to add your own photo)</div>
+    <div class="polaroid-grid" id="polaroid-grid">
+      <label class="polaroid" style="--rot:-4deg;"><input type="file" accept="image/*" onchange="setPolaroid(this,0)"><div class="polaroid-img" id="pimg0" style="--c1:#ff9a9e;--c2:#fecfef;">💬</div><div class="polaroid-cap">First Chat</div></label>
+      <label class="polaroid" style="--rot:3deg;"><input type="file" accept="image/*" onchange="setPolaroid(this,1)"><div class="polaroid-img" id="pimg1" style="--c1:#a18cd1;--c2:#fbc2eb;">😂</div><div class="polaroid-cap">Funny Moment</div></label>
+      <label class="polaroid" style="--rot:2deg;"><input type="file" accept="image/*" onchange="setPolaroid(this,2)"><div class="polaroid-img" id="pimg2" style="--c1:#fbc2eb;--c2:#a6c1ee;">🤫</div><div class="polaroid-cap">Inside Joke</div></label>
+      <label class="polaroid" style="--rot:-3deg;"><input type="file" accept="image/*" onchange="setPolaroid(this,3)"><div class="polaroid-img" id="pimg3" style="--c1:#ffd1ff;--c2:#fad0c4;">💻</div><div class="polaroid-cap">Website Day</div></label>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============ MORE ZONE ============ -->
+<div id="page-more" class="page-sec">
+  <div class="sec-header">
+    <div class="sec-title-main shimmer-text">More Surprises ✨</div>
+    <div class="sec-sub">because 10 wasn't enough</div>
+  </div>
+
+  <!-- Spin wheel -->
+  <div class="glass-card">
+    <div class="card-title">🎰 Spin the Wheel — What should we do?</div>
+    <div class="wheel-wrap">
+      <div class="wheel-outer">
+        <div class="wheel-pointer">📍</div>
+        <div class="wheel" id="wheel">
+          <div class="wheel-label" style="transform:rotate(22deg) translate(40px,-10px);">Movie Night 🎬</div>
+          <div class="wheel-label" style="transform:rotate(67deg) translate(40px,-10px);">Call Challenge 📞</div>
+          <div class="wheel-label" style="transform:rotate(112deg) translate(40px,-10px);">Meme War 😂</div>
+          <div class="wheel-label" style="transform:rotate(157deg) translate(40px,-10px);">Share a Secret 🤫</div>
+          <div class="wheel-label" style="transform:rotate(202deg) translate(40px,-10px);">Voice Note Marathon 🎤</div>
+          <div class="wheel-label" style="transform:rotate(247deg) translate(40px,-10px);">Plan a Hangout 🌸</div>
+          <div class="wheel-label" style="transform:rotate(292deg) translate(40px,-10px);">Tell a Story 📖</div>
+          <div class="wheel-label" style="transform:rotate(337deg) translate(40px,-10px);">Compliment Battle 💕</div>
+        </div>
+      </div>
+      <button class="reveal-btn" onclick="spinWheel()">Spin! 🎰</button>
+      <div class="wheel-result" id="wheel-result"></div>
+    </div>
+  </div>
+
+  <!-- Flip cards -->
+  <div class="glass-card">
+    <div class="card-title">📝 Things I Want To Tell You (But Never Do)</div>
+    <div class="flip-grid">
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-inner">
+          <div class="flip-front">You make ordinary days feel special</div>
+          <div class="flip-back">Even a boring Tuesday feels exciting if you're texting me about it 🌸</div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-inner">
+          <div class="flip-front">I save your funniest texts</div>
+          <div class="flip-back">There's a whole folder. Don't ask. It's for emergencies (bad days) 😂</div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-inner">
+          <div class="flip-front">I check my phone hoping it's you</div>
+          <div class="flip-back">Every notification sound makes me hope, even when I know it's probably not 💕</div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-inner">
+          <div class="flip-front">25 days felt like nothing and everything</div>
+          <div class="flip-back">Time moves weird around you — fast because it's fun, slow because I never want it to end ✨</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Puzzle -->
+  <div class="glass-card">
+    <div class="card-title">🧩 Solve to Unlock</div>
+    <div class="card-body">Riddle: I'm something Palak never does, but always promises. I have 4 letters. What am I?</div>
+    <div class="puzzle-input-row">
+      <input type="text" class="puzzle-input" id="puzzle-input" placeholder="Type your answer...">
+      <button class="puzzle-btn" onclick="checkPuzzle()">Unlock 🔓</button>
+    </div>
+    <div class="puzzle-msg" id="puzzle-msg">Not quite! Hint: it involves a phone 📱</div>
+    <div class="puzzle-reveal" id="puzzle-reveal">
+      <div class="emo-card" style="margin-top:14px;">
+        <span class="emo-icon">🔓</span>
+        <div class="emo-title">Unlocked!</div>
+        <div class="emo-body">The answer was "CALL" 😂 — something Palak promises constantly and does almost never. But hey, you solved it! Here's your reward: you're appreciated more than you know. 💕</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gift box -->
+  <div class="glass-card">
+    <div class="card-title">🎁 A Little Gift For You</div>
+    <div class="gift-wrap">
+      <div class="gift" id="gift" onclick="openGift()">🎁</div>
+      <div class="gift-reveal" id="gift-reveal">
+        <div class="emo-card">
+          <span class="emo-icon">💝</span>
+          <div class="emo-title">Surprise!</div>
+          <div class="emo-body">Inside this box is a permanent reminder: you are loved, you are appreciated, and 25 days with you have meant more than years with most people. That's the gift. It's you, basically. 🌸💕</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vibe-o-meter -->
+  <div class="glass-card">
+    <div class="card-title">📊 Palak's Vibe-O-Meter Today</div>
+    <input type="range" min="0" max="100" value="65" class="vibe-slider" id="vibe-slider" oninput="updateVibe(this.value)">
+    <div id="vibe-result" class="vibe-result"></div>
+  </div>
+
+  <!-- Inside jokes -->
+  <div class="glass-card">
+    <div class="card-title">💭 Things Only We Understand</div>
+    <div class="joke-grid">
+      <div class="ij-item" onclick="this.querySelector('.ij-a').classList.toggle('show')">
+        <div class="ij-q">"Calling in 5 mins" 📵</div>
+        <div class="ij-a">Translation: a 600-word text is incoming, no actual call will occur. Established Day 3.</div>
+      </div>
+      <div class="ij-item" onclick="this.querySelector('.ij-a').classList.toggle('show')">
+        <div class="ij-q">The Bee Incident 🐝</div>
+        <div class="ij-a">A bee was seen. Outside. Through a window. Palak declared a Code Red. We do not discuss it further.</div>
+      </div>
+      <div class="ij-item" onclick="this.querySelector('.ij-a').classList.toggle('show')">
+        <div class="ij-q">"5 more minutes" ⏰</div>
+        <div class="ij-a">A unit of time roughly equal to 2 hours. Used liberally and without shame.</div>
+      </div>
+      <div class="ij-item" onclick="this.querySelector('.ij-a').classList.toggle('show')">
+        <div class="ij-q">Voice Note #47 🎤</div>
+        <div class="ij-a">Iconic. Legendary. 12 minutes 48 seconds long. Topic: still unknown.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Affirmations -->
+  <div class="glass-card">
+    <div class="card-title">🌟 Why You Matter</div>
+    <div class="affirm-card">
+      <div class="affirm-text" id="affirm-text">You make the world brighter just by being in it 🌸</div>
+      <button class="reveal-btn" style="margin-top:14px;" onclick="nextAffirm()">Next ➜</button>
+    </div>
+  </div>
+
+  <!-- Photo upload -->
+  <div class="glass-card">
+    <div class="card-title">📷 Add Your Own Photos</div>
+    <div class="card-body" style="margin-bottom:12px;">Tap a frame to add a real photo of you two (saved only on this device for now).</div>
+    <div class="upload-grid">
+      <label class="upload-slot"><input type="file" accept="image/*" onchange="setUpload(this,'u0')"><div id="u0" style="display:flex;flex-direction:column;align-items:center;"><span class="upload-icon">📷</span><span class="upload-label">Add photo</span></div></label>
+      <label class="upload-slot"><input type="file" accept="image/*" onchange="setUpload(this,'u1')"><div id="u1" style="display:flex;flex-direction:column;align-items:center;"><span class="upload-icon">📷</span><span class="upload-label">Add photo</span></div></label>
+      <label class="upload-slot"><input type="file" accept="image/*" onchange="setUpload(this,'u2')"><div id="u2" style="display:flex;flex-direction:column;align-items:center;"><span class="upload-icon">📷</span><span class="upload-label">Add photo</span></div></label>
+      <label class="upload-slot"><input type="file" accept="image/*" onchange="setUpload(this,'u3')"><div id="u3" style="display:flex;flex-direction:column;align-items:center;"><span class="upload-icon">📷</span><span class="upload-label">Add photo</span></div></label>
+    </div>
+  </div>
+
+  <!-- Friendship Report Card -->
+  <div class="glass-card">
+    <div class="card-title">📊 Palak's Friendship Report Card</div>
+    <div class="report-grid">
+      <div class="report-row"><span class="report-subj">Texting Speed</span><span class="report-grade grade-A">A+</span></div>
+      <div class="report-row"><span class="report-subj">Call Answering</span><span class="report-grade grade-F">F</span></div>
+      <div class="report-row"><span class="report-subj">Comedy</span><span class="report-grade grade-S">S</span></div>
+      <div class="report-row"><span class="report-subj">Loyalty</span><span class="report-grade grade-S">S</span></div>
+      <div class="report-row"><span class="report-subj">Drama Levels</span><span class="report-grade grade-A">A+</span></div>
+      <div class="report-row"><span class="report-subj">Vibes Overall</span><span class="report-grade grade-S">S+</span></div>
+      <div class="report-row"><span class="report-subj">Being The Best Part of My Life</span><span class="report-grade grade-S">S+++</span></div>
+    </div>
+  </div>
+
+  <!-- Share -->
+  <div class="glass-card" style="text-align:center;">
+    <div class="card-title">🔗 Share This With Palak</div>
+    <div class="card-body" style="margin-bottom:16px;">Send her the link so she can see all of this herself 💕</div>
+    <button class="share-btn" onclick="shareWhatsApp()">💚 Share on WhatsApp</button>
+  </div>
+
 </div>
 
 <div id="page-msg" class="page-sec">
@@ -459,6 +897,12 @@ function initParticles(){
 }
 initParticles();
 
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
 function showPage(id,btn){
   document.querySelectorAll('.page-sec').forEach(s=>s.classList.remove('visible'));
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
@@ -470,6 +914,7 @@ function showPage(id,btn){
 const jokes=[
   {q:"Why does Palak never answer calls?",a:"Her thumbs move faster than her voice. She has scientifically optimized communication. She is peak evolution. 😂"},
   {q:"What's Palak's ringtone?",a:"Nobody knows. The phone has never been answered. Scientists are baffled. 📵"},
+  {q:"How does Palak say I love you?",a:"She sends 31 memes in a row at 1:47am with no context. That is the love language. 💕"},
   {q:"Why did Palak cross the road?",a:"To get away from someone who tried to call her. Blocked them on the other side too. 😭"},
   {q:"What's Palak's superpower?",a:"Turning a 2-second call into a 5,000-word text document with footnotes. Unmatched. 🦸‍♀️"},
   {q:"How many Palaks does it take to change a lightbulb?",a:"One — but she'll text about it for 4 days, voice-note about it, then forget and buy a lamp. 😂"},
@@ -505,6 +950,301 @@ function sendMsg(){
   document.getElementById('msg-input').value='';
   launchConfetti();
   setTimeout(()=>{document.getElementById('sent-ok').style.display='none';},4000);
+}
+
+/* ===== FUN ZONE ===== */
+const facts=[
+  "Palak can type faster than she can answer calls 📵",
+  "Palak's 'goodnight' means 2 more hours of chatting 🌙",
+  "Palak has never finished a call but has finished 500 voice notes 🎤",
+  "Palak's phone is always at 12% but somehow always online 🔋",
+  "Palak once said 'I'm offline today' and replied within 10 seconds 😂",
+  "Palak's storytelling has more plot twists than a Netflix series 🎬",
+  "Palak gives the best advice — to literally everyone except herself 🤌",
+  "Palak's laugh is louder than her ringtone (which she's never heard) 😆",
+  "Palak's 'brb' has lasted anywhere from 2 minutes to 2 days ⏳",
+  "Palak's texts come in waves — silence, then 40 messages at once 🌊",
+  "Palak considers a meme a complete and valid reply ✅",
+  "Palak's heart is bigger than her group chat (and that's saying a lot) 💗",
+];
+function randomFact(){
+  const el=document.getElementById('fact-display');
+  el.style.animation='none';void el.offsetWidth;el.style.animation='fadeUp 0.4s ease both';
+  el.textContent=facts[Math.floor(Math.random()*facts.length)];
+}
+
+const memories=[
+  "🌙 The night you both stayed up till 3am over absolutely nothing important — and it was perfect.",
+  "😂 The time she sent 9 voice notes instead of just calling, and somehow it was the best conversation ever.",
+  "💌 That random 'are you okay?' text that arrived at exactly the right moment.",
+  "🎉 The day this website was made — and she cried (happy tears, obviously).",
+  "🐒 The day a monkey (allegedly) brought Palak into your life. Best delivery ever.",
+  "🌸 The first inside joke that still makes no sense to anyone else but you two.",
+  "📵 Every single declined call, immediately followed by a novel-length apology text.",
+  "✨ The conversation that started as '5 mins' and ended 3 hours later.",
+];
+function openJar(){
+  const jar=document.getElementById('jar');
+  jar.classList.remove('opening');void jar.offsetWidth;jar.classList.add('opening');
+  const mem=document.getElementById('jar-memory');
+  mem.classList.remove('show');void mem.offsetWidth;
+  mem.textContent=memories[Math.floor(Math.random()*memories.length)];
+  mem.classList.add('show');
+  launchConfetti();
+}
+
+function downloadCert(){
+  const text=`╔══════════════════════════════╗
+   CERTIFICATE OF AMAZING FRIENDSHIP
+╚══════════════════════════════╝
+
+Awarded To: Palak 🌸
+
+For being awesome, chaotic, hilarious,
+endlessly kind, and completely unforgettable
+— even if she never picks up the phone. 📵💕
+
+★ CERTIFIED ★`;
+  const blob=new Blob([text],{type:'text/plain'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;a.download='Palak_Friendship_Certificate.txt';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  launchConfetti();
+}
+
+function openSecret(){
+  const content=document.getElementById('secret-content');
+  const btn=document.getElementById('secret-btn');
+  content.classList.toggle('show');
+  if(content.classList.contains('show')){btn.textContent='Close 💕';launchConfetti();}
+  else{btn.textContent="Click only if you're Palak 👀";}
+}
+
+let playing=false;
+function togglePlay(){
+  playing=!playing;
+  const vinyl=document.getElementById('vinyl');
+  const btn=document.getElementById('play-btn');
+  const bars=document.querySelectorAll('#music-bars .bar');
+  if(playing){vinyl.classList.add('spin');btn.textContent='⏸';bars.forEach(b=>b.classList.add('playing'));}
+  else{vinyl.classList.remove('spin');btn.textContent='▶';bars.forEach(b=>b.classList.remove('playing'));}
+}
+
+const compliments=[
+  "You're the queen of texting 👑",
+  "Your laugh deserves its own fan club 😂",
+  "Your stories are never boring 🌸",
+  "You make ordinary days feel special ✨",
+  "Your chaos is somehow the most comforting thing ever 💕",
+  "You give the best advice, even if you never take your own 🤌",
+  "Your texts are basically free therapy 📝",
+  "You're proof that 25 days can change everything 🌙",
+  "Your energy is unmatched, even at 2am 🌟",
+  "You're the friend everyone wishes they had 🌷",
+];
+function generateCompliment(){
+  const el=document.getElementById('compliment-text');
+  el.style.animation='none';void el.offsetWidth;el.style.animation='fadeUp 0.4s ease both';
+  el.textContent=compliments[Math.floor(Math.random()*compliments.length)];
+}
+
+const quiz=[
+  {q:"Will Palak answer a call instantly?",opts:["Yes, always","Never 😂","Only on Tuesdays","If it's about food"],correct:1},
+  {q:"What does Palak send instead of calling?",opts:["A single 'ok'","A carrier pigeon","9 voice notes back to back","Smoke signals"],correct:2},
+  {q:"How long is Palak's average 'good night'?",opts:["Exactly goodnight","2 more hours of chatting","5 seconds","A formal essay only"],correct:1},
+  {q:"What's Palak's reaction to seeing a bee?",opts:["Calm and collected","'I'm literally dying' 😭","Calls animal control","Doesn't notice"],correct:1},
+  {q:"How does Palak give advice?",opts:["Never gives advice","Best advice, except to herself","Only gives bad advice","Charges a fee"],correct:1},
+];
+let qi=0,score=0;
+function renderQuiz(){
+  const card=document.getElementById('quiz-card');
+  if(qi>=quiz.length){
+    card.innerHTML=`<div style="text-align:center;font-family:'Playfair Display',serif;font-style:italic;font-size:15px;color:#ffd6e8;line-height:1.8;">Quiz complete! You scored <b style="color:#ffb3d4;">${score}/${quiz.length}</b><br>${score===quiz.length?"Perfect! You truly know Palak 🌸💕":"Close enough — Palak is impossible to fully predict anyway 😂"}</div>
+    <div style="text-align:center;margin-top:14px;"><button class="reveal-btn" onclick="restartQuiz()">Play Again 🔁</button></div>`;
+    return;
+  }
+  const item=quiz[qi];
+  card.innerHTML=`<div class="quiz-q">Q${qi+1}. ${item.q}</div>
+  <div class="quiz-options">${item.opts.map((o,i)=>`<button class="quiz-opt" onclick="answerQuiz(${i})">${o}</button>`).join('')}</div>
+  <div class="quiz-feedback" id="quiz-feedback"></div>`;
+}
+function answerQuiz(i){
+  const item=quiz[qi];
+  const opts=document.querySelectorAll('.quiz-opt');
+  opts.forEach((o,idx)=>{o.style.pointerEvents='none';if(idx===item.correct)o.classList.add('correct');else if(idx===i)o.classList.add('wrong');});
+  if(i===item.correct)score++;
+  document.getElementById('quiz-score').textContent=`Score: ${score} / ${quiz.length}`;
+  const fb=document.getElementById('quiz-feedback');
+  fb.textContent=i===item.correct?"Correct! You really do know her 💕":"Nope! Classic Palak unpredictability 😂";
+  fb.classList.add('show');
+  setTimeout(()=>{qi++;renderQuiz();},1400);
+}
+function restartQuiz(){qi=0;score=0;document.getElementById('quiz-score').textContent=`Score: 0 / ${quiz.length}`;renderQuiz();}
+document.getElementById('quiz-score').textContent=`Score: 0 / ${quiz.length}`;
+renderQuiz();
+
+function setPolaroid(input,idx){
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=function(e){
+    const el=document.getElementById('pimg'+idx);
+    el.innerHTML=`<img src="${e.target.result}">`;
+  };
+  reader.readAsDataURL(file);
+}
+
+/* ===== MORE ZONE ===== */
+
+// Countdown
+function renderCountdown(){
+  const target=new Date();
+  target.setDate(target.getDate()+ (7 - (target.getDay()%7)) ); // next ~week
+  target.setHours(18,0,0,0);
+  const row=document.getElementById('countdown-row');
+  function update(){
+    const now=new Date();
+    let diff=Math.max(0,target-now);
+    const d=Math.floor(diff/86400000);
+    const h=Math.floor((diff%86400000)/3600000);
+    const m=Math.floor((diff%3600000)/60000);
+    const s=Math.floor((diff%60000)/1000);
+    row.innerHTML=`
+      <div class="cd-box"><div class="cd-num">${d}</div><div class="cd-label">Days</div></div>
+      <div class="cd-box"><div class="cd-num">${h}</div><div class="cd-label">Hours</div></div>
+      <div class="cd-box"><div class="cd-num">${m}</div><div class="cd-label">Mins</div></div>
+      <div class="cd-box"><div class="cd-num">${s}</div><div class="cd-label">Secs</div></div>
+    `;
+  }
+  update();
+  setInterval(update,1000);
+}
+renderCountdown();
+
+// Spin wheel
+const wheelOptions=["Movie Night 🎬","Call Challenge 📞 (lol)","Meme War 😂","Share a Secret 🤫","Voice Note Marathon 🎤","Plan a Hangout 🌸","Tell a Story 📖","Compliment Battle 💕"];
+let wheelRotation=0;
+function spinWheel(){
+  const wheel=document.getElementById('wheel');
+  const extra=3600+Math.floor(Math.random()*360);
+  wheelRotation+=extra;
+  wheel.style.transform=`rotate(${wheelRotation}deg)`;
+  const finalAngle=wheelRotation%360;
+  const segment=Math.floor(((360-finalAngle)+22.5)/45)%8;
+  setTimeout(()=>{
+    document.getElementById('wheel-result').textContent=`The wheel says: ${wheelOptions[segment]}`;
+    launchConfetti();
+  },4100);
+}
+
+// Puzzle
+function checkPuzzle(){
+  const val=document.getElementById('puzzle-input').value.trim().toLowerCase();
+  const msg=document.getElementById('puzzle-msg');
+  const reveal=document.getElementById('puzzle-reveal');
+  if(val==='call'||val==='calls'){
+    msg.classList.remove('show');
+    reveal.classList.add('show');
+    launchConfetti();
+  } else {
+    msg.classList.remove('show');void msg.offsetWidth;
+    msg.classList.add('show');
+  }
+}
+
+// Gift box
+function openGift(){
+  const gift=document.getElementById('gift');
+  const reveal=document.getElementById('gift-reveal');
+  if(!gift.classList.contains('opened')){
+    gift.classList.add('opened');
+    gift.textContent='📭';
+    setTimeout(()=>{
+      reveal.classList.add('show');
+      launchConfetti();
+    },300);
+  }
+}
+
+// Vibe-o-meter
+function updateVibe(val){
+  const result=document.getElementById('vibe-result');
+  let emoji,text;
+  if(val<20){emoji='😴';text="Sleepy mode. 'good morning' sent at 2pm. Don't expect replies before noon.";}
+  else if(val<40){emoji='😌';text="Calm vibes. Probably reading messages and not replying. Classic.";}
+  else if(val<60){emoji='😂';text="Funny mode activated. Memes incoming. Lots of them. All unrelated.";}
+  else if(val<80){emoji='🎭';text="Dramatic mode. Everything is either amazing or the worst thing ever. No in-between.";}
+  else{emoji='🌪️';text="MAXIMUM CHAOS. 47 messages, 9 voice notes, and zero phone calls. A perfect day.";}
+  result.innerHTML=`<span class="vibe-emoji">${emoji}</span>${text}`;
+}
+updateVibe(65);
+
+// Affirmations
+const affirmations=[
+  "You make the world brighter just by being in it 🌸",
+  "Your friendship is rare and worth celebrating every day 💕",
+  "The way you care for people doesn't go unnoticed ✨",
+  "You bring out the best in everyone around you 🌟",
+  "25 days with you > years with most people 💖",
+  "Your humour heals more than you realize 😂",
+  "You deserve all the good things coming your way 🌷",
+  "Being yourself is your biggest strength — never change 🦋",
+];
+let affirmIdx=0;
+function nextAffirm(){
+  affirmIdx=(affirmIdx+1)%affirmations.length;
+  const el=document.getElementById('affirm-text');
+  el.style.animation='none';void el.offsetWidth;el.style.animation='fadeUp 0.5s ease both';
+  el.textContent=affirmations[affirmIdx];
+}
+
+// Photo upload
+function setUpload(input,id){
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=function(e){
+    document.getElementById(id).innerHTML=`<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">`;
+  };
+  reader.readAsDataURL(file);
+}
+
+
+// Theme switcher (hue rotate)
+const themeFilters=['none','hue-rotate(40deg)','hue-rotate(-30deg) saturate(1.3)','hue-rotate(160deg) saturate(0.9)'];
+function setTheme(idx){
+  document.body.style.filter=themeFilters[idx];
+  document.querySelectorAll('.tool-btn').forEach((b,i)=>{if(i<4)b.classList.remove('active-theme');});
+  document.getElementById('theme'+idx).classList.add('active-theme');
+  showToast('Theme changed ✨');
+}
+
+// Background ambient music using Web Audio API
+let audioCtx=null,oscillators=[],musicOn=false;
+function toggleMusic(){
+  const btn=document.getElementById('music-toggle');
+  if(!musicOn){
+    if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+    const notes=[261.63,329.63,392.00]; // C E G soft chord
+    oscillators=notes.map(freq=>{
+      const osc=audioCtx.createOscillator();
+      const gain=audioCtx.createGain();
+      osc.type='sine';
+      osc.frequency.value=freq;
+      gain.gain.value=0.025;
+      osc.connect(gain);gain.connect(audioCtx.destination);
+      osc.start();
+      return {osc,gain};
+    });
+    musicOn=true;
+    btn.textContent='🎵 Music: On';
+    showToast('Soft ambient tune playing 🎶');
+  } else {
+    oscillators.forEach(o=>{o.osc.stop();o.osc.disconnect();o.gain.disconnect();});
+    oscillators=[];
+    musicOn=false;
+    btn.textContent='🎵 Music: Off';
+  }
 }
 
 const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.style.animation='fadeUp 0.5s ease both';});},{threshold:0.1});
